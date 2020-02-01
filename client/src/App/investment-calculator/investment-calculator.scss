@@ -1,0 +1,31 @@
+.flex {
+    display: flex;
+   
+}
+
+.column {
+    flex-flow: column;
+}
+
+.form-group {
+    margin-top: .3em;
+    width: 300px;
+    justify-content: flex-end;
+
+    & > * {
+        flex: 0.5;
+    }
+}
+
+label {
+    text-align: right;
+    margin-right: .5em;
+}
+
+input {
+    width: 100%;
+}
+
+.space-around {
+    justify-content: space-around;
+}
