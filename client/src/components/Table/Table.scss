@@ -1,0 +1,11 @@
+@import 'abstracts/variables';
+
+.table {
+    white-space: nowrap;
+}
+
+.menu {
+    i {
+        margin-right: $margin-icon;
+    }
+}

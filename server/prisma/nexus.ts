@@ -11,67 +11,62 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  UserCreateInput: { // input type
-    email: string; // String!
-    firstName: string; // String!
+  CompanyCreateInput: { // input type
+    companyName?: string | null; // String
     id?: string | null; // ID
-    lastName: string; // String!
-    password: string; // String!
-    roles?: NexusGenInputs['UserCreaterolesInput'] | null; // UserCreaterolesInput
-    username: string; // String!
+    keyRatios?: NexusGenInputs['KeyRatiosPerCompanyCreateOneWithoutCompanyInput'] | null; // KeyRatiosPerCompanyCreateOneWithoutCompanyInput
+    tickerSymbol?: string | null; // String
   }
-  UserCreaterolesInput: { // input type
-    set?: string[] | null; // [String!]
+  CompanyCreateOneWithoutKeyRatiosInput: { // input type
+    connect?: NexusGenInputs['CompanyWhereUniqueInput'] | null; // CompanyWhereUniqueInput
+    create?: NexusGenInputs['CompanyCreateWithoutKeyRatiosInput'] | null; // CompanyCreateWithoutKeyRatiosInput
   }
-  UserUpdateInput: { // input type
-    email?: string | null; // String
-    firstName?: string | null; // String
-    lastName?: string | null; // String
-    password?: string | null; // String
-    roles?: NexusGenInputs['UserUpdaterolesInput'] | null; // UserUpdaterolesInput
-    username?: string | null; // String
+  CompanyCreateWithoutKeyRatiosInput: { // input type
+    companyName?: string | null; // String
+    id?: string | null; // ID
+    tickerSymbol?: string | null; // String
   }
-  UserUpdateManyMutationInput: { // input type
-    email?: string | null; // String
-    firstName?: string | null; // String
-    lastName?: string | null; // String
-    password?: string | null; // String
-    roles?: NexusGenInputs['UserUpdaterolesInput'] | null; // UserUpdaterolesInput
-    username?: string | null; // String
+  CompanyUpdateInput: { // input type
+    companyName?: string | null; // String
+    keyRatios?: NexusGenInputs['KeyRatiosPerCompanyUpdateOneWithoutCompanyInput'] | null; // KeyRatiosPerCompanyUpdateOneWithoutCompanyInput
+    tickerSymbol?: string | null; // String
   }
-  UserUpdaterolesInput: { // input type
-    set?: string[] | null; // [String!]
+  CompanyUpdateManyMutationInput: { // input type
+    companyName?: string | null; // String
+    tickerSymbol?: string | null; // String
   }
-  UserWhereInput: { // input type
-    AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    email?: string | null; // String
-    email_contains?: string | null; // String
-    email_ends_with?: string | null; // String
-    email_gt?: string | null; // String
-    email_gte?: string | null; // String
-    email_in?: string[] | null; // [String!]
-    email_lt?: string | null; // String
-    email_lte?: string | null; // String
-    email_not?: string | null; // String
-    email_not_contains?: string | null; // String
-    email_not_ends_with?: string | null; // String
-    email_not_in?: string[] | null; // [String!]
-    email_not_starts_with?: string | null; // String
-    email_starts_with?: string | null; // String
-    firstName?: string | null; // String
-    firstName_contains?: string | null; // String
-    firstName_ends_with?: string | null; // String
-    firstName_gt?: string | null; // String
-    firstName_gte?: string | null; // String
-    firstName_in?: string[] | null; // [String!]
-    firstName_lt?: string | null; // String
-    firstName_lte?: string | null; // String
-    firstName_not?: string | null; // String
-    firstName_not_contains?: string | null; // String
-    firstName_not_ends_with?: string | null; // String
-    firstName_not_in?: string[] | null; // [String!]
-    firstName_not_starts_with?: string | null; // String
-    firstName_starts_with?: string | null; // String
+  CompanyUpdateOneWithoutKeyRatiosInput: { // input type
+    connect?: NexusGenInputs['CompanyWhereUniqueInput'] | null; // CompanyWhereUniqueInput
+    create?: NexusGenInputs['CompanyCreateWithoutKeyRatiosInput'] | null; // CompanyCreateWithoutKeyRatiosInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['CompanyUpdateWithoutKeyRatiosDataInput'] | null; // CompanyUpdateWithoutKeyRatiosDataInput
+    upsert?: NexusGenInputs['CompanyUpsertWithoutKeyRatiosInput'] | null; // CompanyUpsertWithoutKeyRatiosInput
+  }
+  CompanyUpdateWithoutKeyRatiosDataInput: { // input type
+    companyName?: string | null; // String
+    tickerSymbol?: string | null; // String
+  }
+  CompanyUpsertWithoutKeyRatiosInput: { // input type
+    create: NexusGenInputs['CompanyCreateWithoutKeyRatiosInput']; // CompanyCreateWithoutKeyRatiosInput!
+    update: NexusGenInputs['CompanyUpdateWithoutKeyRatiosDataInput']; // CompanyUpdateWithoutKeyRatiosDataInput!
+  }
+  CompanyWhereInput: { // input type
+    AND?: NexusGenInputs['CompanyWhereInput'][] | null; // [CompanyWhereInput!]
+    companyName?: string | null; // String
+    companyName_contains?: string | null; // String
+    companyName_ends_with?: string | null; // String
+    companyName_gt?: string | null; // String
+    companyName_gte?: string | null; // String
+    companyName_in?: string[] | null; // [String!]
+    companyName_lt?: string | null; // String
+    companyName_lte?: string | null; // String
+    companyName_not?: string | null; // String
+    companyName_not_contains?: string | null; // String
+    companyName_not_ends_with?: string | null; // String
+    companyName_not_in?: string[] | null; // [String!]
+    companyName_not_starts_with?: string | null; // String
+    companyName_starts_with?: string | null; // String
     id?: string | null; // ID
     id_contains?: string | null; // ID
     id_ends_with?: string | null; // ID
@@ -86,66 +81,164 @@ export interface NexusGenInputs {
     id_not_in?: string[] | null; // [ID!]
     id_not_starts_with?: string | null; // ID
     id_starts_with?: string | null; // ID
-    lastName?: string | null; // String
-    lastName_contains?: string | null; // String
-    lastName_ends_with?: string | null; // String
-    lastName_gt?: string | null; // String
-    lastName_gte?: string | null; // String
-    lastName_in?: string[] | null; // [String!]
-    lastName_lt?: string | null; // String
-    lastName_lte?: string | null; // String
-    lastName_not?: string | null; // String
-    lastName_not_contains?: string | null; // String
-    lastName_not_ends_with?: string | null; // String
-    lastName_not_in?: string[] | null; // [String!]
-    lastName_not_starts_with?: string | null; // String
-    lastName_starts_with?: string | null; // String
-    password?: string | null; // String
-    password_contains?: string | null; // String
-    password_ends_with?: string | null; // String
-    password_gt?: string | null; // String
-    password_gte?: string | null; // String
-    password_in?: string[] | null; // [String!]
-    password_lt?: string | null; // String
-    password_lte?: string | null; // String
-    password_not?: string | null; // String
-    password_not_contains?: string | null; // String
-    password_not_ends_with?: string | null; // String
-    password_not_in?: string[] | null; // [String!]
-    password_not_starts_with?: string | null; // String
-    password_starts_with?: string | null; // String
-    username?: string | null; // String
-    username_contains?: string | null; // String
-    username_ends_with?: string | null; // String
-    username_gt?: string | null; // String
-    username_gte?: string | null; // String
-    username_in?: string[] | null; // [String!]
-    username_lt?: string | null; // String
-    username_lte?: string | null; // String
-    username_not?: string | null; // String
-    username_not_contains?: string | null; // String
-    username_not_ends_with?: string | null; // String
-    username_not_in?: string[] | null; // [String!]
-    username_not_starts_with?: string | null; // String
-    username_starts_with?: string | null; // String
+    keyRatios?: NexusGenInputs['KeyRatiosPerCompanyWhereInput'] | null; // KeyRatiosPerCompanyWhereInput
+    tickerSymbol?: string | null; // String
+    tickerSymbol_contains?: string | null; // String
+    tickerSymbol_ends_with?: string | null; // String
+    tickerSymbol_gt?: string | null; // String
+    tickerSymbol_gte?: string | null; // String
+    tickerSymbol_in?: string[] | null; // [String!]
+    tickerSymbol_lt?: string | null; // String
+    tickerSymbol_lte?: string | null; // String
+    tickerSymbol_not?: string | null; // String
+    tickerSymbol_not_contains?: string | null; // String
+    tickerSymbol_not_ends_with?: string | null; // String
+    tickerSymbol_not_in?: string[] | null; // [String!]
+    tickerSymbol_not_starts_with?: string | null; // String
+    tickerSymbol_starts_with?: string | null; // String
   }
-  UserWhereUniqueInput: { // input type
-    email?: string | null; // String
+  CompanyWhereUniqueInput: { // input type
     id?: string | null; // ID
-    username?: string | null; // String
+  }
+  KeyRatiosPerCompanyCreateInput: { // input type
+    bookValuePerShare?: any | null; // Json
+    company?: NexusGenInputs['CompanyCreateOneWithoutKeyRatiosInput'] | null; // CompanyCreateOneWithoutKeyRatiosInput
+    currentRatio?: any | null; // Json
+    debtToEquity?: any | null; // Json
+    dividends?: any | null; // Json
+    earningsPerShare?: any | null; // Json
+    freeCashFlow?: any | null; // Json
+    freeCashFlowPerShare?: any | null; // Json
+    id?: string | null; // ID
+    returnOnEquity?: any | null; // Json
+  }
+  KeyRatiosPerCompanyCreateOneWithoutCompanyInput: { // input type
+    connect?: NexusGenInputs['KeyRatiosPerCompanyWhereUniqueInput'] | null; // KeyRatiosPerCompanyWhereUniqueInput
+    create?: NexusGenInputs['KeyRatiosPerCompanyCreateWithoutCompanyInput'] | null; // KeyRatiosPerCompanyCreateWithoutCompanyInput
+  }
+  KeyRatiosPerCompanyCreateWithoutCompanyInput: { // input type
+    bookValuePerShare?: any | null; // Json
+    currentRatio?: any | null; // Json
+    debtToEquity?: any | null; // Json
+    dividends?: any | null; // Json
+    earningsPerShare?: any | null; // Json
+    freeCashFlow?: any | null; // Json
+    freeCashFlowPerShare?: any | null; // Json
+    id?: string | null; // ID
+    returnOnEquity?: any | null; // Json
+  }
+  KeyRatiosPerCompanyUpdateInput: { // input type
+    bookValuePerShare?: any | null; // Json
+    company?: NexusGenInputs['CompanyUpdateOneWithoutKeyRatiosInput'] | null; // CompanyUpdateOneWithoutKeyRatiosInput
+    currentRatio?: any | null; // Json
+    debtToEquity?: any | null; // Json
+    dividends?: any | null; // Json
+    earningsPerShare?: any | null; // Json
+    freeCashFlow?: any | null; // Json
+    freeCashFlowPerShare?: any | null; // Json
+    returnOnEquity?: any | null; // Json
+  }
+  KeyRatiosPerCompanyUpdateManyMutationInput: { // input type
+    bookValuePerShare?: any | null; // Json
+    currentRatio?: any | null; // Json
+    debtToEquity?: any | null; // Json
+    dividends?: any | null; // Json
+    earningsPerShare?: any | null; // Json
+    freeCashFlow?: any | null; // Json
+    freeCashFlowPerShare?: any | null; // Json
+    returnOnEquity?: any | null; // Json
+  }
+  KeyRatiosPerCompanyUpdateOneWithoutCompanyInput: { // input type
+    connect?: NexusGenInputs['KeyRatiosPerCompanyWhereUniqueInput'] | null; // KeyRatiosPerCompanyWhereUniqueInput
+    create?: NexusGenInputs['KeyRatiosPerCompanyCreateWithoutCompanyInput'] | null; // KeyRatiosPerCompanyCreateWithoutCompanyInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['KeyRatiosPerCompanyUpdateWithoutCompanyDataInput'] | null; // KeyRatiosPerCompanyUpdateWithoutCompanyDataInput
+    upsert?: NexusGenInputs['KeyRatiosPerCompanyUpsertWithoutCompanyInput'] | null; // KeyRatiosPerCompanyUpsertWithoutCompanyInput
+  }
+  KeyRatiosPerCompanyUpdateWithoutCompanyDataInput: { // input type
+    bookValuePerShare?: any | null; // Json
+    currentRatio?: any | null; // Json
+    debtToEquity?: any | null; // Json
+    dividends?: any | null; // Json
+    earningsPerShare?: any | null; // Json
+    freeCashFlow?: any | null; // Json
+    freeCashFlowPerShare?: any | null; // Json
+    returnOnEquity?: any | null; // Json
+  }
+  KeyRatiosPerCompanyUpsertWithoutCompanyInput: { // input type
+    create: NexusGenInputs['KeyRatiosPerCompanyCreateWithoutCompanyInput']; // KeyRatiosPerCompanyCreateWithoutCompanyInput!
+    update: NexusGenInputs['KeyRatiosPerCompanyUpdateWithoutCompanyDataInput']; // KeyRatiosPerCompanyUpdateWithoutCompanyDataInput!
+  }
+  KeyRatiosPerCompanyWhereInput: { // input type
+    AND?: NexusGenInputs['KeyRatiosPerCompanyWhereInput'][] | null; // [KeyRatiosPerCompanyWhereInput!]
+    company?: NexusGenInputs['CompanyWhereInput'] | null; // CompanyWhereInput
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+  }
+  KeyRatiosPerCompanyWhereUniqueInput: { // input type
+    id?: string | null; // ID
   }
 }
 
 export interface NexusGenEnums {
-  UserOrderByInput: "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "password_ASC" | "password_DESC" | "username_ASC" | "username_DESC"
+  CompanyOrderByInput: "companyName_ASC" | "companyName_DESC" | "id_ASC" | "id_DESC" | "tickerSymbol_ASC" | "tickerSymbol_DESC"
+  KeyRatiosPerCompanyOrderByInput: "bookValuePerShare_ASC" | "bookValuePerShare_DESC" | "currentRatio_ASC" | "currentRatio_DESC" | "debtToEquity_ASC" | "debtToEquity_DESC" | "dividends_ASC" | "dividends_DESC" | "earningsPerShare_ASC" | "earningsPerShare_DESC" | "freeCashFlow_ASC" | "freeCashFlow_DESC" | "freeCashFlowPerShare_ASC" | "freeCashFlowPerShare_DESC" | "id_ASC" | "id_DESC" | "returnOnEquity_ASC" | "returnOnEquity_DESC"
 }
 
 export interface NexusGenRootTypes {
-  AggregateUser: { // root type
+  AggregateCompany: { // root type
+    count: number; // Int!
+  }
+  AggregateKeyRatiosPerCompany: { // root type
     count: number; // Int!
   }
   BatchPayload: { // root type
     count: any; // Long!
+  }
+  Company: { // root type
+    companyName?: string | null; // String
+    id: string; // ID!
+    tickerSymbol?: string | null; // String
+  }
+  CompanyConnection: { // root type
+    edges: NexusGenRootTypes['CompanyEdge'][]; // [CompanyEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  CompanyEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Company']; // Company!
+  }
+  KeyRatiosPerCompany: { // root type
+    bookValuePerShare?: any | null; // Json
+    currentRatio?: any | null; // Json
+    debtToEquity?: any | null; // Json
+    dividends?: any | null; // Json
+    earningsPerShare?: any | null; // Json
+    freeCashFlow?: any | null; // Json
+    freeCashFlowPerShare?: any | null; // Json
+    id: string; // ID!
+    returnOnEquity?: any | null; // Json
+  }
+  KeyRatiosPerCompanyConnection: { // root type
+    edges: NexusGenRootTypes['KeyRatiosPerCompanyEdge'][]; // [KeyRatiosPerCompanyEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  KeyRatiosPerCompanyEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['KeyRatiosPerCompany']; // KeyRatiosPerCompany!
   }
   Mutation: {};
   PageInfo: { // root type
@@ -155,56 +248,99 @@ export interface NexusGenRootTypes {
     startCursor?: string | null; // String
   }
   Query: {};
-  User: { // root type
-    email: string; // String!
-    firstName: string; // String!
-    id: string; // ID!
-    lastName: string; // String!
-    password: string; // String!
-    roles: string[]; // [String!]!
-    username: string; // String!
-  }
-  UserConnection: { // root type
-    edges: NexusGenRootTypes['UserEdge'][]; // [UserEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  UserEdge: { // root type
-    cursor: string; // String!
-    node: NexusGenRootTypes['User']; // User!
-  }
   String: string;
   Int: number;
   Float: number;
   Boolean: boolean;
   ID: string;
+  Json: any;
   Long: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  UserCreateInput: NexusGenInputs['UserCreateInput'];
-  UserCreaterolesInput: NexusGenInputs['UserCreaterolesInput'];
-  UserUpdateInput: NexusGenInputs['UserUpdateInput'];
-  UserUpdateManyMutationInput: NexusGenInputs['UserUpdateManyMutationInput'];
-  UserUpdaterolesInput: NexusGenInputs['UserUpdaterolesInput'];
-  UserWhereInput: NexusGenInputs['UserWhereInput'];
-  UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
-  UserOrderByInput: NexusGenEnums['UserOrderByInput'];
+  CompanyCreateInput: NexusGenInputs['CompanyCreateInput'];
+  CompanyCreateOneWithoutKeyRatiosInput: NexusGenInputs['CompanyCreateOneWithoutKeyRatiosInput'];
+  CompanyCreateWithoutKeyRatiosInput: NexusGenInputs['CompanyCreateWithoutKeyRatiosInput'];
+  CompanyUpdateInput: NexusGenInputs['CompanyUpdateInput'];
+  CompanyUpdateManyMutationInput: NexusGenInputs['CompanyUpdateManyMutationInput'];
+  CompanyUpdateOneWithoutKeyRatiosInput: NexusGenInputs['CompanyUpdateOneWithoutKeyRatiosInput'];
+  CompanyUpdateWithoutKeyRatiosDataInput: NexusGenInputs['CompanyUpdateWithoutKeyRatiosDataInput'];
+  CompanyUpsertWithoutKeyRatiosInput: NexusGenInputs['CompanyUpsertWithoutKeyRatiosInput'];
+  CompanyWhereInput: NexusGenInputs['CompanyWhereInput'];
+  CompanyWhereUniqueInput: NexusGenInputs['CompanyWhereUniqueInput'];
+  KeyRatiosPerCompanyCreateInput: NexusGenInputs['KeyRatiosPerCompanyCreateInput'];
+  KeyRatiosPerCompanyCreateOneWithoutCompanyInput: NexusGenInputs['KeyRatiosPerCompanyCreateOneWithoutCompanyInput'];
+  KeyRatiosPerCompanyCreateWithoutCompanyInput: NexusGenInputs['KeyRatiosPerCompanyCreateWithoutCompanyInput'];
+  KeyRatiosPerCompanyUpdateInput: NexusGenInputs['KeyRatiosPerCompanyUpdateInput'];
+  KeyRatiosPerCompanyUpdateManyMutationInput: NexusGenInputs['KeyRatiosPerCompanyUpdateManyMutationInput'];
+  KeyRatiosPerCompanyUpdateOneWithoutCompanyInput: NexusGenInputs['KeyRatiosPerCompanyUpdateOneWithoutCompanyInput'];
+  KeyRatiosPerCompanyUpdateWithoutCompanyDataInput: NexusGenInputs['KeyRatiosPerCompanyUpdateWithoutCompanyDataInput'];
+  KeyRatiosPerCompanyUpsertWithoutCompanyInput: NexusGenInputs['KeyRatiosPerCompanyUpsertWithoutCompanyInput'];
+  KeyRatiosPerCompanyWhereInput: NexusGenInputs['KeyRatiosPerCompanyWhereInput'];
+  KeyRatiosPerCompanyWhereUniqueInput: NexusGenInputs['KeyRatiosPerCompanyWhereUniqueInput'];
+  CompanyOrderByInput: NexusGenEnums['CompanyOrderByInput'];
+  KeyRatiosPerCompanyOrderByInput: NexusGenEnums['KeyRatiosPerCompanyOrderByInput'];
 }
 
 export interface NexusGenFieldTypes {
-  AggregateUser: { // field return type
+  AggregateCompany: { // field return type
+    count: number; // Int!
+  }
+  AggregateKeyRatiosPerCompany: { // field return type
     count: number; // Int!
   }
   BatchPayload: { // field return type
     count: any; // Long!
   }
+  Company: { // field return type
+    companyName: string | null; // String
+    id: string; // ID!
+    keyRatios: NexusGenRootTypes['KeyRatiosPerCompany'] | null; // KeyRatiosPerCompany
+    tickerSymbol: string | null; // String
+  }
+  CompanyConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregateCompany']; // AggregateCompany!
+    edges: NexusGenRootTypes['CompanyEdge'][]; // [CompanyEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  CompanyEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Company']; // Company!
+  }
+  KeyRatiosPerCompany: { // field return type
+    bookValuePerShare: any | null; // Json
+    company: NexusGenRootTypes['Company'] | null; // Company
+    currentRatio: any | null; // Json
+    debtToEquity: any | null; // Json
+    dividends: any | null; // Json
+    earningsPerShare: any | null; // Json
+    freeCashFlow: any | null; // Json
+    freeCashFlowPerShare: any | null; // Json
+    id: string; // ID!
+    returnOnEquity: any | null; // Json
+  }
+  KeyRatiosPerCompanyConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregateKeyRatiosPerCompany']; // AggregateKeyRatiosPerCompany!
+    edges: NexusGenRootTypes['KeyRatiosPerCompanyEdge'][]; // [KeyRatiosPerCompanyEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  KeyRatiosPerCompanyEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['KeyRatiosPerCompany']; // KeyRatiosPerCompany!
+  }
   Mutation: { // field return type
-    createUser: NexusGenRootTypes['User']; // User!
-    deleteManyUsers: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    deleteUser: NexusGenRootTypes['User'] | null; // User
-    updateManyUsers: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    updateUser: NexusGenRootTypes['User'] | null; // User
-    upsertUser: NexusGenRootTypes['User']; // User!
+    createCompany: NexusGenRootTypes['Company']; // Company!
+    createKeyRatiosPerCompany: NexusGenRootTypes['KeyRatiosPerCompany']; // KeyRatiosPerCompany!
+    deleteCompany: NexusGenRootTypes['Company'] | null; // Company
+    deleteKeyRatiosPerCompany: NexusGenRootTypes['KeyRatiosPerCompany'] | null; // KeyRatiosPerCompany
+    deleteManyCompanies: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyKeyRatiosPerCompanies: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateCompany: NexusGenRootTypes['Company'] | null; // Company
+    updateKeyRatiosPerCompany: NexusGenRootTypes['KeyRatiosPerCompany'] | null; // KeyRatiosPerCompany
+    updateManyCompanies: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyKeyRatiosPerCompanies: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    upsertCompany: NexusGenRootTypes['Company']; // Company!
+    upsertKeyRatiosPerCompany: NexusGenRootTypes['KeyRatiosPerCompany']; // KeyRatiosPerCompany!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -213,76 +349,104 @@ export interface NexusGenFieldTypes {
     startCursor: string | null; // String
   }
   Query: { // field return type
-    user: NexusGenRootTypes['User'] | null; // User
-    users: NexusGenRootTypes['User'][]; // [User!]!
-    usersConnection: NexusGenRootTypes['UserConnection']; // UserConnection!
-  }
-  User: { // field return type
-    email: string; // String!
-    firstName: string; // String!
-    id: string; // ID!
-    lastName: string; // String!
-    password: string; // String!
-    roles: string[]; // [String!]!
-    username: string; // String!
-  }
-  UserConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateUser']; // AggregateUser!
-    edges: NexusGenRootTypes['UserEdge'][]; // [UserEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  UserEdge: { // field return type
-    cursor: string; // String!
-    node: NexusGenRootTypes['User']; // User!
+    companies: NexusGenRootTypes['Company'][]; // [Company!]!
+    companiesConnection: NexusGenRootTypes['CompanyConnection']; // CompanyConnection!
+    company: NexusGenRootTypes['Company'] | null; // Company
+    keyRatiosPerCompanies: NexusGenRootTypes['KeyRatiosPerCompany'][]; // [KeyRatiosPerCompany!]!
+    keyRatiosPerCompaniesConnection: NexusGenRootTypes['KeyRatiosPerCompanyConnection']; // KeyRatiosPerCompanyConnection!
+    keyRatiosPerCompany: NexusGenRootTypes['KeyRatiosPerCompany'] | null; // KeyRatiosPerCompany
   }
 }
 
 export interface NexusGenArgTypes {
   Mutation: {
-    createUser: { // args
-      data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
+    createCompany: { // args
+      data: NexusGenInputs['CompanyCreateInput']; // CompanyCreateInput!
     }
-    deleteManyUsers: { // args
-      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    createKeyRatiosPerCompany: { // args
+      data: NexusGenInputs['KeyRatiosPerCompanyCreateInput']; // KeyRatiosPerCompanyCreateInput!
     }
-    deleteUser: { // args
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    deleteCompany: { // args
+      where: NexusGenInputs['CompanyWhereUniqueInput']; // CompanyWhereUniqueInput!
     }
-    updateManyUsers: { // args
-      data: NexusGenInputs['UserUpdateManyMutationInput']; // UserUpdateManyMutationInput!
-      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    deleteKeyRatiosPerCompany: { // args
+      where: NexusGenInputs['KeyRatiosPerCompanyWhereUniqueInput']; // KeyRatiosPerCompanyWhereUniqueInput!
     }
-    updateUser: { // args
-      data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    deleteManyCompanies: { // args
+      where?: NexusGenInputs['CompanyWhereInput'] | null; // CompanyWhereInput
     }
-    upsertUser: { // args
-      create: NexusGenInputs['UserCreateInput']; // UserCreateInput!
-      update: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    deleteManyKeyRatiosPerCompanies: { // args
+      where?: NexusGenInputs['KeyRatiosPerCompanyWhereInput'] | null; // KeyRatiosPerCompanyWhereInput
+    }
+    updateCompany: { // args
+      data: NexusGenInputs['CompanyUpdateInput']; // CompanyUpdateInput!
+      where: NexusGenInputs['CompanyWhereUniqueInput']; // CompanyWhereUniqueInput!
+    }
+    updateKeyRatiosPerCompany: { // args
+      data: NexusGenInputs['KeyRatiosPerCompanyUpdateInput']; // KeyRatiosPerCompanyUpdateInput!
+      where: NexusGenInputs['KeyRatiosPerCompanyWhereUniqueInput']; // KeyRatiosPerCompanyWhereUniqueInput!
+    }
+    updateManyCompanies: { // args
+      data: NexusGenInputs['CompanyUpdateManyMutationInput']; // CompanyUpdateManyMutationInput!
+      where?: NexusGenInputs['CompanyWhereInput'] | null; // CompanyWhereInput
+    }
+    updateManyKeyRatiosPerCompanies: { // args
+      data: NexusGenInputs['KeyRatiosPerCompanyUpdateManyMutationInput']; // KeyRatiosPerCompanyUpdateManyMutationInput!
+      where?: NexusGenInputs['KeyRatiosPerCompanyWhereInput'] | null; // KeyRatiosPerCompanyWhereInput
+    }
+    upsertCompany: { // args
+      create: NexusGenInputs['CompanyCreateInput']; // CompanyCreateInput!
+      update: NexusGenInputs['CompanyUpdateInput']; // CompanyUpdateInput!
+      where: NexusGenInputs['CompanyWhereUniqueInput']; // CompanyWhereUniqueInput!
+    }
+    upsertKeyRatiosPerCompany: { // args
+      create: NexusGenInputs['KeyRatiosPerCompanyCreateInput']; // KeyRatiosPerCompanyCreateInput!
+      update: NexusGenInputs['KeyRatiosPerCompanyUpdateInput']; // KeyRatiosPerCompanyUpdateInput!
+      where: NexusGenInputs['KeyRatiosPerCompanyWhereUniqueInput']; // KeyRatiosPerCompanyWhereUniqueInput!
     }
   }
   Query: {
-    user: { // args
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
-    }
-    users: { // args
+    companies: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenEnums['UserOrderByInput'] | null; // UserOrderByInput
+      orderBy?: NexusGenEnums['CompanyOrderByInput'] | null; // CompanyOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+      where?: NexusGenInputs['CompanyWhereInput'] | null; // CompanyWhereInput
     }
-    usersConnection: { // args
+    companiesConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenEnums['UserOrderByInput'] | null; // UserOrderByInput
+      orderBy?: NexusGenEnums['CompanyOrderByInput'] | null; // CompanyOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+      where?: NexusGenInputs['CompanyWhereInput'] | null; // CompanyWhereInput
+    }
+    company: { // args
+      where: NexusGenInputs['CompanyWhereUniqueInput']; // CompanyWhereUniqueInput!
+    }
+    keyRatiosPerCompanies: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['KeyRatiosPerCompanyOrderByInput'] | null; // KeyRatiosPerCompanyOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['KeyRatiosPerCompanyWhereInput'] | null; // KeyRatiosPerCompanyWhereInput
+    }
+    keyRatiosPerCompaniesConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['KeyRatiosPerCompanyOrderByInput'] | null; // KeyRatiosPerCompanyOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['KeyRatiosPerCompanyWhereInput'] | null; // KeyRatiosPerCompanyWhereInput
+    }
+    keyRatiosPerCompany: { // args
+      where: NexusGenInputs['KeyRatiosPerCompanyWhereUniqueInput']; // KeyRatiosPerCompanyWhereUniqueInput!
     }
   }
 }
@@ -292,15 +456,15 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AggregateUser" | "BatchPayload" | "Mutation" | "PageInfo" | "Query" | "User" | "UserConnection" | "UserEdge";
+export type NexusGenObjectNames = "AggregateCompany" | "AggregateKeyRatiosPerCompany" | "BatchPayload" | "Company" | "CompanyConnection" | "CompanyEdge" | "KeyRatiosPerCompany" | "KeyRatiosPerCompanyConnection" | "KeyRatiosPerCompanyEdge" | "Mutation" | "PageInfo" | "Query";
 
-export type NexusGenInputNames = "UserCreateInput" | "UserCreaterolesInput" | "UserUpdateInput" | "UserUpdateManyMutationInput" | "UserUpdaterolesInput" | "UserWhereInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = "CompanyCreateInput" | "CompanyCreateOneWithoutKeyRatiosInput" | "CompanyCreateWithoutKeyRatiosInput" | "CompanyUpdateInput" | "CompanyUpdateManyMutationInput" | "CompanyUpdateOneWithoutKeyRatiosInput" | "CompanyUpdateWithoutKeyRatiosDataInput" | "CompanyUpsertWithoutKeyRatiosInput" | "CompanyWhereInput" | "CompanyWhereUniqueInput" | "KeyRatiosPerCompanyCreateInput" | "KeyRatiosPerCompanyCreateOneWithoutCompanyInput" | "KeyRatiosPerCompanyCreateWithoutCompanyInput" | "KeyRatiosPerCompanyUpdateInput" | "KeyRatiosPerCompanyUpdateManyMutationInput" | "KeyRatiosPerCompanyUpdateOneWithoutCompanyInput" | "KeyRatiosPerCompanyUpdateWithoutCompanyDataInput" | "KeyRatiosPerCompanyUpsertWithoutCompanyInput" | "KeyRatiosPerCompanyWhereInput" | "KeyRatiosPerCompanyWhereUniqueInput";
 
-export type NexusGenEnumNames = "UserOrderByInput";
+export type NexusGenEnumNames = "CompanyOrderByInput" | "KeyRatiosPerCompanyOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "Long" | "String";
+export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "Json" | "Long" | "String";
 
 export type NexusGenUnionNames = never;
 

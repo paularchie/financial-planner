@@ -15,45 +15,72 @@ export interface NexusPrismaTypes {
   objectTypes: {
     fields: {
       Query: QueryObject
-      User: UserObject
-      UserConnection: UserConnectionObject
+      KeyRatiosPerCompany: KeyRatiosPerCompanyObject
+      Company: CompanyObject
+      KeyRatiosPerCompanyConnection: KeyRatiosPerCompanyConnectionObject
       PageInfo: PageInfoObject
-      UserEdge: UserEdgeObject
-      AggregateUser: AggregateUserObject
+      KeyRatiosPerCompanyEdge: KeyRatiosPerCompanyEdgeObject
+      AggregateKeyRatiosPerCompany: AggregateKeyRatiosPerCompanyObject
+      CompanyConnection: CompanyConnectionObject
+      CompanyEdge: CompanyEdgeObject
+      AggregateCompany: AggregateCompanyObject
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
-      UserSubscriptionPayload: UserSubscriptionPayloadObject
-      UserPreviousValues: UserPreviousValuesObject
+      KeyRatiosPerCompanySubscriptionPayload: KeyRatiosPerCompanySubscriptionPayloadObject
+      KeyRatiosPerCompanyPreviousValues: KeyRatiosPerCompanyPreviousValuesObject
+      CompanySubscriptionPayload: CompanySubscriptionPayloadObject
+      CompanyPreviousValues: CompanyPreviousValuesObject
     }
     fieldsDetails: {
       Query: QueryFieldDetails
-      User: UserFieldDetails
-      UserConnection: UserConnectionFieldDetails
+      KeyRatiosPerCompany: KeyRatiosPerCompanyFieldDetails
+      Company: CompanyFieldDetails
+      KeyRatiosPerCompanyConnection: KeyRatiosPerCompanyConnectionFieldDetails
       PageInfo: PageInfoFieldDetails
-      UserEdge: UserEdgeFieldDetails
-      AggregateUser: AggregateUserFieldDetails
+      KeyRatiosPerCompanyEdge: KeyRatiosPerCompanyEdgeFieldDetails
+      AggregateKeyRatiosPerCompany: AggregateKeyRatiosPerCompanyFieldDetails
+      CompanyConnection: CompanyConnectionFieldDetails
+      CompanyEdge: CompanyEdgeFieldDetails
+      AggregateCompany: AggregateCompanyFieldDetails
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
-      UserSubscriptionPayload: UserSubscriptionPayloadFieldDetails
-      UserPreviousValues: UserPreviousValuesFieldDetails
+      KeyRatiosPerCompanySubscriptionPayload: KeyRatiosPerCompanySubscriptionPayloadFieldDetails
+      KeyRatiosPerCompanyPreviousValues: KeyRatiosPerCompanyPreviousValuesFieldDetails
+      CompanySubscriptionPayload: CompanySubscriptionPayloadFieldDetails
+      CompanyPreviousValues: CompanyPreviousValuesFieldDetails
     }
   }
   inputTypes: {
     fields: {
-      UserWhereUniqueInput: UserWhereUniqueInputInputObject
-      UserWhereInput: UserWhereInputInputObject
-      UserCreateInput: UserCreateInputInputObject
-      UserCreaterolesInput: UserCreaterolesInputInputObject
-      UserUpdateInput: UserUpdateInputInputObject
-      UserUpdaterolesInput: UserUpdaterolesInputInputObject
-      UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
-      UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
+      KeyRatiosPerCompanyWhereUniqueInput: KeyRatiosPerCompanyWhereUniqueInputInputObject
+      KeyRatiosPerCompanyWhereInput: KeyRatiosPerCompanyWhereInputInputObject
+      CompanyWhereInput: CompanyWhereInputInputObject
+      CompanyWhereUniqueInput: CompanyWhereUniqueInputInputObject
+      KeyRatiosPerCompanyCreateInput: KeyRatiosPerCompanyCreateInputInputObject
+      CompanyCreateOneWithoutKeyRatiosInput: CompanyCreateOneWithoutKeyRatiosInputInputObject
+      CompanyCreateWithoutKeyRatiosInput: CompanyCreateWithoutKeyRatiosInputInputObject
+      KeyRatiosPerCompanyUpdateInput: KeyRatiosPerCompanyUpdateInputInputObject
+      CompanyUpdateOneWithoutKeyRatiosInput: CompanyUpdateOneWithoutKeyRatiosInputInputObject
+      CompanyUpdateWithoutKeyRatiosDataInput: CompanyUpdateWithoutKeyRatiosDataInputInputObject
+      CompanyUpsertWithoutKeyRatiosInput: CompanyUpsertWithoutKeyRatiosInputInputObject
+      KeyRatiosPerCompanyUpdateManyMutationInput: KeyRatiosPerCompanyUpdateManyMutationInputInputObject
+      CompanyCreateInput: CompanyCreateInputInputObject
+      KeyRatiosPerCompanyCreateOneWithoutCompanyInput: KeyRatiosPerCompanyCreateOneWithoutCompanyInputInputObject
+      KeyRatiosPerCompanyCreateWithoutCompanyInput: KeyRatiosPerCompanyCreateWithoutCompanyInputInputObject
+      CompanyUpdateInput: CompanyUpdateInputInputObject
+      KeyRatiosPerCompanyUpdateOneWithoutCompanyInput: KeyRatiosPerCompanyUpdateOneWithoutCompanyInputInputObject
+      KeyRatiosPerCompanyUpdateWithoutCompanyDataInput: KeyRatiosPerCompanyUpdateWithoutCompanyDataInputInputObject
+      KeyRatiosPerCompanyUpsertWithoutCompanyInput: KeyRatiosPerCompanyUpsertWithoutCompanyInputInputObject
+      CompanyUpdateManyMutationInput: CompanyUpdateManyMutationInputInputObject
+      KeyRatiosPerCompanySubscriptionWhereInput: KeyRatiosPerCompanySubscriptionWhereInputInputObject
+      CompanySubscriptionWhereInput: CompanySubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
-    UserOrderByInput: UserOrderByInputValues,
+    KeyRatiosPerCompanyOrderByInput: KeyRatiosPerCompanyOrderByInputValues,
+    CompanyOrderByInput: CompanyOrderByInputValues,
     MutationType: MutationTypeValues,
   }
 }
@@ -62,19 +89,25 @@ export interface NexusPrismaTypes {
 
 type QueryObject =
   | QueryFields
-  | { name: 'user', args?: QueryUserArgs[] | false, alias?: string  } 
-  | { name: 'users', args?: QueryUsersArgs[] | false, alias?: string  } 
-  | { name: 'usersConnection', args?: QueryUsersConnectionArgs[] | false, alias?: string  } 
+  | { name: 'keyRatiosPerCompany', args?: QueryKeyRatiosPerCompanyArgs[] | false, alias?: string  } 
+  | { name: 'keyRatiosPerCompanies', args?: QueryKeyRatiosPerCompaniesArgs[] | false, alias?: string  } 
+  | { name: 'keyRatiosPerCompaniesConnection', args?: QueryKeyRatiosPerCompaniesConnectionArgs[] | false, alias?: string  } 
+  | { name: 'company', args?: QueryCompanyArgs[] | false, alias?: string  } 
+  | { name: 'companies', args?: QueryCompaniesArgs[] | false, alias?: string  } 
+  | { name: 'companiesConnection', args?: QueryCompaniesConnectionArgs[] | false, alias?: string  } 
 
 type QueryFields =
-  | 'user'
-  | 'users'
-  | 'usersConnection'
+  | 'keyRatiosPerCompany'
+  | 'keyRatiosPerCompanies'
+  | 'keyRatiosPerCompaniesConnection'
+  | 'company'
+  | 'companies'
+  | 'companiesConnection'
 
 
-type QueryUserArgs =
+type QueryKeyRatiosPerCompanyArgs =
   | 'where'
-type QueryUsersArgs =
+type QueryKeyRatiosPerCompaniesArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -82,7 +115,25 @@ type QueryUsersArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryUsersConnectionArgs =
+type QueryKeyRatiosPerCompaniesConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryCompanyArgs =
+  | 'where'
+type QueryCompaniesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryCompaniesConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -93,74 +144,119 @@ type QueryUsersConnectionArgs =
   
 
 export interface QueryFieldDetails {
-  user: {
-    type: 'User'
-    args: Record<QueryUserArgs, core.NexusArgDef<string>>
+  keyRatiosPerCompany: {
+    type: 'KeyRatiosPerCompany'
+    args: Record<QueryKeyRatiosPerCompanyArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where: UserWhereUniqueInput }  ,
+      args: { where: KeyRatiosPerCompanyWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.User | null> | prisma.User | null
+    ) => Promise<prisma.KeyRatiosPerCompany | null> | prisma.KeyRatiosPerCompany | null
   }
-  users: {
-    type: 'User'
-    args: Record<QueryUsersArgs, core.NexusArgDef<string>>
+  keyRatiosPerCompanies: {
+    type: 'KeyRatiosPerCompany'
+    args: Record<QueryKeyRatiosPerCompaniesArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: UserWhereInput | null, orderBy?: prisma.UserOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: KeyRatiosPerCompanyWhereInput | null, orderBy?: prisma.KeyRatiosPerCompanyOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.User[]> | prisma.User[]
+    ) => Promise<prisma.KeyRatiosPerCompany[]> | prisma.KeyRatiosPerCompany[]
   }
-  usersConnection: {
-    type: 'UserConnection'
-    args: Record<QueryUsersConnectionArgs, core.NexusArgDef<string>>
+  keyRatiosPerCompaniesConnection: {
+    type: 'KeyRatiosPerCompanyConnection'
+    args: Record<QueryKeyRatiosPerCompaniesConnectionArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: UserWhereInput | null, orderBy?: prisma.UserOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: KeyRatiosPerCompanyWhereInput | null, orderBy?: prisma.KeyRatiosPerCompanyOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.UserConnection> | prisma.UserConnection
+    ) => Promise<prisma.KeyRatiosPerCompanyConnection> | prisma.KeyRatiosPerCompanyConnection
+  }
+  company: {
+    type: 'Company'
+    args: Record<QueryCompanyArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: CompanyWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Company | null> | prisma.Company | null
+  }
+  companies: {
+    type: 'Company'
+    args: Record<QueryCompaniesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: CompanyWhereInput | null, orderBy?: prisma.CompanyOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Company[]> | prisma.Company[]
+  }
+  companiesConnection: {
+    type: 'CompanyConnection'
+    args: Record<QueryCompaniesConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: CompanyWhereInput | null, orderBy?: prisma.CompanyOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CompanyConnection> | prisma.CompanyConnection
   }
 }
   
 
-// Types for User
+// Types for KeyRatiosPerCompany
 
-type UserObject =
-  | UserFields
+type KeyRatiosPerCompanyObject =
+  | KeyRatiosPerCompanyFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'firstName', args?: [] | false, alias?: string  } 
-  | { name: 'lastName', args?: [] | false, alias?: string  } 
-  | { name: 'username', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'password', args?: [] | false, alias?: string  } 
-  | { name: 'roles', args?: [] | false, alias?: string  } 
+  | { name: 'company', args?: [] | false, alias?: string  } 
+  | { name: 'earningsPerShare', args?: [] | false, alias?: string  } 
+  | { name: 'dividends', args?: [] | false, alias?: string  } 
+  | { name: 'bookValuePerShare', args?: [] | false, alias?: string  } 
+  | { name: 'freeCashFlow', args?: [] | false, alias?: string  } 
+  | { name: 'freeCashFlowPerShare', args?: [] | false, alias?: string  } 
+  | { name: 'returnOnEquity', args?: [] | false, alias?: string  } 
+  | { name: 'currentRatio', args?: [] | false, alias?: string  } 
+  | { name: 'debtToEquity', args?: [] | false, alias?: string  } 
 
-type UserFields =
+type KeyRatiosPerCompanyFields =
   | 'id'
-  | 'firstName'
-  | 'lastName'
-  | 'username'
-  | 'email'
-  | 'password'
-  | 'roles'
+  | 'company'
+  | 'earningsPerShare'
+  | 'dividends'
+  | 'bookValuePerShare'
+  | 'freeCashFlow'
+  | 'freeCashFlowPerShare'
+  | 'returnOnEquity'
+  | 'currentRatio'
+  | 'debtToEquity'
 
 
 
   
 
-export interface UserFieldDetails {
+export interface KeyRatiosPerCompanyFieldDetails {
   id: {
     type: 'ID'
     args: {}
@@ -169,66 +265,155 @@ export interface UserFieldDetails {
     nullable: false
     resolve: undefined
   }
-  firstName: {
-    type: 'String'
+  company: {
+    type: 'Company'
     args: {}
     description: string
     list: undefined
-    nullable: false
-    resolve: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"KeyRatiosPerCompany">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Company | null> | prisma.Company | null
   }
-  lastName: {
-    type: 'String'
+  earningsPerShare: {
+    type: 'Json'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
-  username: {
-    type: 'String'
+  dividends: {
+    type: 'Json'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
-  email: {
-    type: 'String'
+  bookValuePerShare: {
+    type: 'Json'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
-  password: {
-    type: 'String'
+  freeCashFlow: {
+    type: 'Json'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
-  roles: {
-    type: 'String'
+  freeCashFlowPerShare: {
+    type: 'Json'
     args: {}
     description: string
-    list: true
-    nullable: false
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  returnOnEquity: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  currentRatio: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  debtToEquity: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
 }
   
 
-// Types for UserConnection
+// Types for Company
 
-type UserConnectionObject =
-  | UserConnectionFields
+type CompanyObject =
+  | CompanyFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'companyName', args?: [] | false, alias?: string  } 
+  | { name: 'tickerSymbol', args?: [] | false, alias?: string  } 
+  | { name: 'keyRatios', args?: [] | false, alias?: string  } 
+
+type CompanyFields =
+  | 'id'
+  | 'companyName'
+  | 'tickerSymbol'
+  | 'keyRatios'
+
+
+
+  
+
+export interface CompanyFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  companyName: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  tickerSymbol: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  keyRatios: {
+    type: 'KeyRatiosPerCompany'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Company">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.KeyRatiosPerCompany | null> | prisma.KeyRatiosPerCompany | null
+  }
+}
+  
+
+// Types for KeyRatiosPerCompanyConnection
+
+type KeyRatiosPerCompanyConnectionObject =
+  | KeyRatiosPerCompanyConnectionFields
   | { name: 'pageInfo', args?: [] | false, alias?: string  } 
   | { name: 'edges', args?: [] | false, alias?: string  } 
   | { name: 'aggregate', args?: [] | false, alias?: string  } 
 
-type UserConnectionFields =
+type KeyRatiosPerCompanyConnectionFields =
   | 'pageInfo'
   | 'edges'
   | 'aggregate'
@@ -237,7 +422,7 @@ type UserConnectionFields =
 
   
 
-export interface UserConnectionFieldDetails {
+export interface KeyRatiosPerCompanyConnectionFieldDetails {
   pageInfo: {
     type: 'PageInfo'
     args: {}
@@ -245,37 +430,37 @@ export interface UserConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"UserConnection">,
+      root: core.RootValue<"KeyRatiosPerCompanyConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
   edges: {
-    type: 'UserEdge'
+    type: 'KeyRatiosPerCompanyEdge'
     args: {}
     description: string
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"UserConnection">,
+      root: core.RootValue<"KeyRatiosPerCompanyConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.UserEdge[]> | prisma.UserEdge[]
+    ) => Promise<prisma.KeyRatiosPerCompanyEdge[]> | prisma.KeyRatiosPerCompanyEdge[]
   }
   aggregate: {
-    type: 'AggregateUser'
+    type: 'AggregateKeyRatiosPerCompany'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"UserConnection">,
+      root: core.RootValue<"KeyRatiosPerCompanyConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregateUser> | prisma.AggregateUser
+    ) => Promise<prisma.AggregateKeyRatiosPerCompany> | prisma.AggregateKeyRatiosPerCompany
   }
 }
   
@@ -335,14 +520,14 @@ export interface PageInfoFieldDetails {
 }
   
 
-// Types for UserEdge
+// Types for KeyRatiosPerCompanyEdge
 
-type UserEdgeObject =
-  | UserEdgeFields
+type KeyRatiosPerCompanyEdgeObject =
+  | KeyRatiosPerCompanyEdgeFields
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'cursor', args?: [] | false, alias?: string  } 
 
-type UserEdgeFields =
+type KeyRatiosPerCompanyEdgeFields =
   | 'node'
   | 'cursor'
 
@@ -350,19 +535,19 @@ type UserEdgeFields =
 
   
 
-export interface UserEdgeFieldDetails {
+export interface KeyRatiosPerCompanyEdgeFieldDetails {
   node: {
-    type: 'User'
+    type: 'KeyRatiosPerCompany'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"UserEdge">,
+      root: core.RootValue<"KeyRatiosPerCompanyEdge">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
+    ) => Promise<prisma.KeyRatiosPerCompany> | prisma.KeyRatiosPerCompany
   }
   cursor: {
     type: 'String'
@@ -375,20 +560,145 @@ export interface UserEdgeFieldDetails {
 }
   
 
-// Types for AggregateUser
+// Types for AggregateKeyRatiosPerCompany
 
-type AggregateUserObject =
-  | AggregateUserFields
+type AggregateKeyRatiosPerCompanyObject =
+  | AggregateKeyRatiosPerCompanyFields
   | { name: 'count', args?: [] | false, alias?: string  } 
 
-type AggregateUserFields =
+type AggregateKeyRatiosPerCompanyFields =
   | 'count'
 
 
 
   
 
-export interface AggregateUserFieldDetails {
+export interface AggregateKeyRatiosPerCompanyFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for CompanyConnection
+
+type CompanyConnectionObject =
+  | CompanyConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type CompanyConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface CompanyConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"CompanyConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'CompanyEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"CompanyConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CompanyEdge[]> | prisma.CompanyEdge[]
+  }
+  aggregate: {
+    type: 'AggregateCompany'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"CompanyConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateCompany> | prisma.AggregateCompany
+  }
+}
+  
+
+// Types for CompanyEdge
+
+type CompanyEdgeObject =
+  | CompanyEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type CompanyEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface CompanyEdgeFieldDetails {
+  node: {
+    type: 'Company'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"CompanyEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Company> | prisma.Company
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateCompany
+
+type AggregateCompanyObject =
+  | AggregateCompanyFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateCompanyFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateCompanyFieldDetails {
   count: {
     type: 'Int'
     args: {}
@@ -404,115 +714,221 @@ export interface AggregateUserFieldDetails {
 
 type MutationObject =
   | MutationFields
-  | { name: 'createUser', args?: MutationCreateUserArgs[] | false, alias?: string  } 
-  | { name: 'updateUser', args?: MutationUpdateUserArgs[] | false, alias?: string  } 
-  | { name: 'updateManyUsers', args?: MutationUpdateManyUsersArgs[] | false, alias?: string  } 
-  | { name: 'upsertUser', args?: MutationUpsertUserArgs[] | false, alias?: string  } 
-  | { name: 'deleteUser', args?: MutationDeleteUserArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyUsers', args?: MutationDeleteManyUsersArgs[] | false, alias?: string  } 
+  | { name: 'createKeyRatiosPerCompany', args?: MutationCreateKeyRatiosPerCompanyArgs[] | false, alias?: string  } 
+  | { name: 'updateKeyRatiosPerCompany', args?: MutationUpdateKeyRatiosPerCompanyArgs[] | false, alias?: string  } 
+  | { name: 'updateManyKeyRatiosPerCompanies', args?: MutationUpdateManyKeyRatiosPerCompaniesArgs[] | false, alias?: string  } 
+  | { name: 'upsertKeyRatiosPerCompany', args?: MutationUpsertKeyRatiosPerCompanyArgs[] | false, alias?: string  } 
+  | { name: 'deleteKeyRatiosPerCompany', args?: MutationDeleteKeyRatiosPerCompanyArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyKeyRatiosPerCompanies', args?: MutationDeleteManyKeyRatiosPerCompaniesArgs[] | false, alias?: string  } 
+  | { name: 'createCompany', args?: MutationCreateCompanyArgs[] | false, alias?: string  } 
+  | { name: 'updateCompany', args?: MutationUpdateCompanyArgs[] | false, alias?: string  } 
+  | { name: 'updateManyCompanies', args?: MutationUpdateManyCompaniesArgs[] | false, alias?: string  } 
+  | { name: 'upsertCompany', args?: MutationUpsertCompanyArgs[] | false, alias?: string  } 
+  | { name: 'deleteCompany', args?: MutationDeleteCompanyArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyCompanies', args?: MutationDeleteManyCompaniesArgs[] | false, alias?: string  } 
 
 type MutationFields =
-  | 'createUser'
-  | 'updateUser'
-  | 'updateManyUsers'
-  | 'upsertUser'
-  | 'deleteUser'
-  | 'deleteManyUsers'
+  | 'createKeyRatiosPerCompany'
+  | 'updateKeyRatiosPerCompany'
+  | 'updateManyKeyRatiosPerCompanies'
+  | 'upsertKeyRatiosPerCompany'
+  | 'deleteKeyRatiosPerCompany'
+  | 'deleteManyKeyRatiosPerCompanies'
+  | 'createCompany'
+  | 'updateCompany'
+  | 'updateManyCompanies'
+  | 'upsertCompany'
+  | 'deleteCompany'
+  | 'deleteManyCompanies'
 
 
-type MutationCreateUserArgs =
+type MutationCreateKeyRatiosPerCompanyArgs =
   | 'data'
-type MutationUpdateUserArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyUsersArgs =
+type MutationUpdateKeyRatiosPerCompanyArgs =
   | 'data'
   | 'where'
-type MutationUpsertUserArgs =
+type MutationUpdateManyKeyRatiosPerCompaniesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertKeyRatiosPerCompanyArgs =
   | 'where'
   | 'create'
   | 'update'
-type MutationDeleteUserArgs =
+type MutationDeleteKeyRatiosPerCompanyArgs =
   | 'where'
-type MutationDeleteManyUsersArgs =
+type MutationDeleteManyKeyRatiosPerCompaniesArgs =
+  | 'where'
+type MutationCreateCompanyArgs =
+  | 'data'
+type MutationUpdateCompanyArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyCompaniesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertCompanyArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteCompanyArgs =
+  | 'where'
+type MutationDeleteManyCompaniesArgs =
   | 'where'
   
 
 export interface MutationFieldDetails {
-  createUser: {
-    type: 'User'
-    args: Record<MutationCreateUserArgs, core.NexusArgDef<string>>
+  createKeyRatiosPerCompany: {
+    type: 'KeyRatiosPerCompany'
+    args: Record<MutationCreateKeyRatiosPerCompanyArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: UserCreateInput }  ,
+      args: { data: KeyRatiosPerCompanyCreateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
+    ) => Promise<prisma.KeyRatiosPerCompany> | prisma.KeyRatiosPerCompany
   }
-  updateUser: {
-    type: 'User'
-    args: Record<MutationUpdateUserArgs, core.NexusArgDef<string>>
+  updateKeyRatiosPerCompany: {
+    type: 'KeyRatiosPerCompany'
+    args: Record<MutationUpdateKeyRatiosPerCompanyArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: UserUpdateInput, where: UserWhereUniqueInput }  ,
+      args: { data: KeyRatiosPerCompanyUpdateInput, where: KeyRatiosPerCompanyWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.User | null> | prisma.User | null
+    ) => Promise<prisma.KeyRatiosPerCompany | null> | prisma.KeyRatiosPerCompany | null
   }
-  updateManyUsers: {
+  updateManyKeyRatiosPerCompanies: {
     type: 'BatchPayload'
-    args: Record<MutationUpdateManyUsersArgs, core.NexusArgDef<string>>
+    args: Record<MutationUpdateManyKeyRatiosPerCompaniesArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: UserUpdateManyMutationInput, where?: UserWhereInput | null }  ,
+      args: { data: KeyRatiosPerCompanyUpdateManyMutationInput, where?: KeyRatiosPerCompanyWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
-  upsertUser: {
-    type: 'User'
-    args: Record<MutationUpsertUserArgs, core.NexusArgDef<string>>
+  upsertKeyRatiosPerCompany: {
+    type: 'KeyRatiosPerCompany'
+    args: Record<MutationUpsertKeyRatiosPerCompanyArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }  ,
+      args: { where: KeyRatiosPerCompanyWhereUniqueInput, create: KeyRatiosPerCompanyCreateInput, update: KeyRatiosPerCompanyUpdateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
+    ) => Promise<prisma.KeyRatiosPerCompany> | prisma.KeyRatiosPerCompany
   }
-  deleteUser: {
-    type: 'User'
-    args: Record<MutationDeleteUserArgs, core.NexusArgDef<string>>
+  deleteKeyRatiosPerCompany: {
+    type: 'KeyRatiosPerCompany'
+    args: Record<MutationDeleteKeyRatiosPerCompanyArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where: UserWhereUniqueInput }  ,
+      args: { where: KeyRatiosPerCompanyWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.User | null> | prisma.User | null
+    ) => Promise<prisma.KeyRatiosPerCompany | null> | prisma.KeyRatiosPerCompany | null
   }
-  deleteManyUsers: {
+  deleteManyKeyRatiosPerCompanies: {
     type: 'BatchPayload'
-    args: Record<MutationDeleteManyUsersArgs, core.NexusArgDef<string>>
+    args: Record<MutationDeleteManyKeyRatiosPerCompaniesArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where?: UserWhereInput | null }  ,
+      args: { where?: KeyRatiosPerCompanyWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createCompany: {
+    type: 'Company'
+    args: Record<MutationCreateCompanyArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: CompanyCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Company> | prisma.Company
+  }
+  updateCompany: {
+    type: 'Company'
+    args: Record<MutationUpdateCompanyArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: CompanyUpdateInput, where: CompanyWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Company | null> | prisma.Company | null
+  }
+  updateManyCompanies: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyCompaniesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: CompanyUpdateManyMutationInput, where?: CompanyWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertCompany: {
+    type: 'Company'
+    args: Record<MutationUpsertCompanyArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: CompanyWhereUniqueInput, create: CompanyCreateInput, update: CompanyUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Company> | prisma.Company
+  }
+  deleteCompany: {
+    type: 'Company'
+    args: Record<MutationDeleteCompanyArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: CompanyWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Company | null> | prisma.Company | null
+  }
+  deleteManyCompanies: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyCompaniesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: CompanyWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
@@ -549,43 +965,60 @@ export interface BatchPayloadFieldDetails {
 
 type SubscriptionObject =
   | SubscriptionFields
-  | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
+  | { name: 'keyRatiosPerCompany', args?: SubscriptionKeyRatiosPerCompanyArgs[] | false, alias?: string  } 
+  | { name: 'company', args?: SubscriptionCompanyArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
-  | 'user'
+  | 'keyRatiosPerCompany'
+  | 'company'
 
 
-type SubscriptionUserArgs =
+type SubscriptionKeyRatiosPerCompanyArgs =
+  | 'where'
+type SubscriptionCompanyArgs =
   | 'where'
   
 
 export interface SubscriptionFieldDetails {
-  user: {
-    type: 'UserSubscriptionPayload'
-    args: Record<SubscriptionUserArgs, core.NexusArgDef<string>>
+  keyRatiosPerCompany: {
+    type: 'KeyRatiosPerCompanySubscriptionPayload'
+    args: Record<SubscriptionKeyRatiosPerCompanyArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Subscription">,
-      args: { where?: UserSubscriptionWhereInput | null }  ,
+      args: { where?: KeyRatiosPerCompanySubscriptionWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.UserSubscriptionPayload | null> | prisma.UserSubscriptionPayload | null
+    ) => Promise<prisma.KeyRatiosPerCompanySubscriptionPayload | null> | prisma.KeyRatiosPerCompanySubscriptionPayload | null
+  }
+  company: {
+    type: 'CompanySubscriptionPayload'
+    args: Record<SubscriptionCompanyArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: CompanySubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CompanySubscriptionPayload | null> | prisma.CompanySubscriptionPayload | null
   }
 }
   
 
-// Types for UserSubscriptionPayload
+// Types for KeyRatiosPerCompanySubscriptionPayload
 
-type UserSubscriptionPayloadObject =
-  | UserSubscriptionPayloadFields
+type KeyRatiosPerCompanySubscriptionPayloadObject =
+  | KeyRatiosPerCompanySubscriptionPayloadFields
   | { name: 'mutation', args?: [] | false, alias?: string  } 
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'updatedFields', args?: [] | false, alias?: string  } 
   | { name: 'previousValues', args?: [] | false, alias?: string  } 
 
-type UserSubscriptionPayloadFields =
+type KeyRatiosPerCompanySubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
@@ -595,7 +1028,7 @@ type UserSubscriptionPayloadFields =
 
   
 
-export interface UserSubscriptionPayloadFieldDetails {
+export interface KeyRatiosPerCompanySubscriptionPayloadFieldDetails {
   mutation: {
     type: 'MutationType'
     args: {}
@@ -603,24 +1036,24 @@ export interface UserSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"UserSubscriptionPayload">,
+      root: core.RootValue<"KeyRatiosPerCompanySubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
   node: {
-    type: 'User'
+    type: 'KeyRatiosPerCompany'
     args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"UserSubscriptionPayload">,
+      root: core.RootValue<"KeyRatiosPerCompanySubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.User | null> | prisma.User | null
+    ) => Promise<prisma.KeyRatiosPerCompany | null> | prisma.KeyRatiosPerCompany | null
   }
   updatedFields: {
     type: 'String'
@@ -631,47 +1064,51 @@ export interface UserSubscriptionPayloadFieldDetails {
     resolve: undefined
   }
   previousValues: {
-    type: 'UserPreviousValues'
+    type: 'KeyRatiosPerCompanyPreviousValues'
     args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"UserSubscriptionPayload">,
+      root: core.RootValue<"KeyRatiosPerCompanySubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.UserPreviousValues | null> | prisma.UserPreviousValues | null
+    ) => Promise<prisma.KeyRatiosPerCompanyPreviousValues | null> | prisma.KeyRatiosPerCompanyPreviousValues | null
   }
 }
   
 
-// Types for UserPreviousValues
+// Types for KeyRatiosPerCompanyPreviousValues
 
-type UserPreviousValuesObject =
-  | UserPreviousValuesFields
+type KeyRatiosPerCompanyPreviousValuesObject =
+  | KeyRatiosPerCompanyPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'firstName', args?: [] | false, alias?: string  } 
-  | { name: 'lastName', args?: [] | false, alias?: string  } 
-  | { name: 'username', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'password', args?: [] | false, alias?: string  } 
-  | { name: 'roles', args?: [] | false, alias?: string  } 
+  | { name: 'earningsPerShare', args?: [] | false, alias?: string  } 
+  | { name: 'dividends', args?: [] | false, alias?: string  } 
+  | { name: 'bookValuePerShare', args?: [] | false, alias?: string  } 
+  | { name: 'freeCashFlow', args?: [] | false, alias?: string  } 
+  | { name: 'freeCashFlowPerShare', args?: [] | false, alias?: string  } 
+  | { name: 'returnOnEquity', args?: [] | false, alias?: string  } 
+  | { name: 'currentRatio', args?: [] | false, alias?: string  } 
+  | { name: 'debtToEquity', args?: [] | false, alias?: string  } 
 
-type UserPreviousValuesFields =
+type KeyRatiosPerCompanyPreviousValuesFields =
   | 'id'
-  | 'firstName'
-  | 'lastName'
-  | 'username'
-  | 'email'
-  | 'password'
-  | 'roles'
+  | 'earningsPerShare'
+  | 'dividends'
+  | 'bookValuePerShare'
+  | 'freeCashFlow'
+  | 'freeCashFlowPerShare'
+  | 'returnOnEquity'
+  | 'currentRatio'
+  | 'debtToEquity'
 
 
 
   
 
-export interface UserPreviousValuesFieldDetails {
+export interface KeyRatiosPerCompanyPreviousValuesFieldDetails {
   id: {
     type: 'ID'
     args: {}
@@ -680,47 +1117,120 @@ export interface UserPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  firstName: {
-    type: 'String'
+  earningsPerShare: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  dividends: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  bookValuePerShare: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  freeCashFlow: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  freeCashFlowPerShare: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  returnOnEquity: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  currentRatio: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  debtToEquity: {
+    type: 'Json'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+}
+  
+
+// Types for CompanySubscriptionPayload
+
+type CompanySubscriptionPayloadObject =
+  | CompanySubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type CompanySubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface CompanySubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
     args: {}
     description: string
     list: undefined
     nullable: false
-    resolve: undefined
+    resolve: (
+      root: core.RootValue<"CompanySubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
   }
-  lastName: {
-    type: 'String'
+  node: {
+    type: 'Company'
     args: {}
     description: string
     list: undefined
-    nullable: false
-    resolve: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"CompanySubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Company | null> | prisma.Company | null
   }
-  username: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  email: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  password: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  roles: {
+  updatedFields: {
     type: 'String'
     args: {}
     description: string
@@ -728,22 +1238,76 @@ export interface UserPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
+  previousValues: {
+    type: 'CompanyPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"CompanySubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CompanyPreviousValues | null> | prisma.CompanyPreviousValues | null
+  }
+}
+  
+
+// Types for CompanyPreviousValues
+
+type CompanyPreviousValuesObject =
+  | CompanyPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'companyName', args?: [] | false, alias?: string  } 
+  | { name: 'tickerSymbol', args?: [] | false, alias?: string  } 
+
+type CompanyPreviousValuesFields =
+  | 'id'
+  | 'companyName'
+  | 'tickerSymbol'
+
+
+
+  
+
+export interface CompanyPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  companyName: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  tickerSymbol: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
 }
   
 
 
-export interface UserWhereUniqueInput {
+export interface KeyRatiosPerCompanyWhereUniqueInput {
   id?: string | null
-  username?: string | null
-  email?: string | null
 }
-export type UserWhereUniqueInputInputObject =
-  | Extract<keyof UserWhereUniqueInput, string>
+export type KeyRatiosPerCompanyWhereUniqueInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanyWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'username', alias?: string  } 
-  | { name: 'email', alias?: string  } 
   
-export interface UserWhereInput {
+export interface KeyRatiosPerCompanyWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -758,80 +1322,11 @@ export interface UserWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  firstName?: string | null
-  firstName_not?: string | null
-  firstName_in?: string[]
-  firstName_not_in?: string[]
-  firstName_lt?: string | null
-  firstName_lte?: string | null
-  firstName_gt?: string | null
-  firstName_gte?: string | null
-  firstName_contains?: string | null
-  firstName_not_contains?: string | null
-  firstName_starts_with?: string | null
-  firstName_not_starts_with?: string | null
-  firstName_ends_with?: string | null
-  firstName_not_ends_with?: string | null
-  lastName?: string | null
-  lastName_not?: string | null
-  lastName_in?: string[]
-  lastName_not_in?: string[]
-  lastName_lt?: string | null
-  lastName_lte?: string | null
-  lastName_gt?: string | null
-  lastName_gte?: string | null
-  lastName_contains?: string | null
-  lastName_not_contains?: string | null
-  lastName_starts_with?: string | null
-  lastName_not_starts_with?: string | null
-  lastName_ends_with?: string | null
-  lastName_not_ends_with?: string | null
-  username?: string | null
-  username_not?: string | null
-  username_in?: string[]
-  username_not_in?: string[]
-  username_lt?: string | null
-  username_lte?: string | null
-  username_gt?: string | null
-  username_gte?: string | null
-  username_contains?: string | null
-  username_not_contains?: string | null
-  username_starts_with?: string | null
-  username_not_starts_with?: string | null
-  username_ends_with?: string | null
-  username_not_ends_with?: string | null
-  email?: string | null
-  email_not?: string | null
-  email_in?: string[]
-  email_not_in?: string[]
-  email_lt?: string | null
-  email_lte?: string | null
-  email_gt?: string | null
-  email_gte?: string | null
-  email_contains?: string | null
-  email_not_contains?: string | null
-  email_starts_with?: string | null
-  email_not_starts_with?: string | null
-  email_ends_with?: string | null
-  email_not_ends_with?: string | null
-  password?: string | null
-  password_not?: string | null
-  password_in?: string[]
-  password_not_in?: string[]
-  password_lt?: string | null
-  password_lte?: string | null
-  password_gt?: string | null
-  password_gte?: string | null
-  password_contains?: string | null
-  password_not_contains?: string | null
-  password_starts_with?: string | null
-  password_not_starts_with?: string | null
-  password_ends_with?: string | null
-  password_not_ends_with?: string | null
-  AND?: UserWhereInput[]
+  company?: CompanyWhereInput | null
+  AND?: KeyRatiosPerCompanyWhereInput[]
 }
-export type UserWhereInputInputObject =
-  | Extract<keyof UserWhereInput, string>
+export type KeyRatiosPerCompanyWhereInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanyWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -846,155 +1341,372 @@ export type UserWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'firstName_not', alias?: string  } 
-  | { name: 'firstName_in', alias?: string  } 
-  | { name: 'firstName_not_in', alias?: string  } 
-  | { name: 'firstName_lt', alias?: string  } 
-  | { name: 'firstName_lte', alias?: string  } 
-  | { name: 'firstName_gt', alias?: string  } 
-  | { name: 'firstName_gte', alias?: string  } 
-  | { name: 'firstName_contains', alias?: string  } 
-  | { name: 'firstName_not_contains', alias?: string  } 
-  | { name: 'firstName_starts_with', alias?: string  } 
-  | { name: 'firstName_not_starts_with', alias?: string  } 
-  | { name: 'firstName_ends_with', alias?: string  } 
-  | { name: 'firstName_not_ends_with', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'lastName_not', alias?: string  } 
-  | { name: 'lastName_in', alias?: string  } 
-  | { name: 'lastName_not_in', alias?: string  } 
-  | { name: 'lastName_lt', alias?: string  } 
-  | { name: 'lastName_lte', alias?: string  } 
-  | { name: 'lastName_gt', alias?: string  } 
-  | { name: 'lastName_gte', alias?: string  } 
-  | { name: 'lastName_contains', alias?: string  } 
-  | { name: 'lastName_not_contains', alias?: string  } 
-  | { name: 'lastName_starts_with', alias?: string  } 
-  | { name: 'lastName_not_starts_with', alias?: string  } 
-  | { name: 'lastName_ends_with', alias?: string  } 
-  | { name: 'lastName_not_ends_with', alias?: string  } 
-  | { name: 'username', alias?: string  } 
-  | { name: 'username_not', alias?: string  } 
-  | { name: 'username_in', alias?: string  } 
-  | { name: 'username_not_in', alias?: string  } 
-  | { name: 'username_lt', alias?: string  } 
-  | { name: 'username_lte', alias?: string  } 
-  | { name: 'username_gt', alias?: string  } 
-  | { name: 'username_gte', alias?: string  } 
-  | { name: 'username_contains', alias?: string  } 
-  | { name: 'username_not_contains', alias?: string  } 
-  | { name: 'username_starts_with', alias?: string  } 
-  | { name: 'username_not_starts_with', alias?: string  } 
-  | { name: 'username_ends_with', alias?: string  } 
-  | { name: 'username_not_ends_with', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'email_not', alias?: string  } 
-  | { name: 'email_in', alias?: string  } 
-  | { name: 'email_not_in', alias?: string  } 
-  | { name: 'email_lt', alias?: string  } 
-  | { name: 'email_lte', alias?: string  } 
-  | { name: 'email_gt', alias?: string  } 
-  | { name: 'email_gte', alias?: string  } 
-  | { name: 'email_contains', alias?: string  } 
-  | { name: 'email_not_contains', alias?: string  } 
-  | { name: 'email_starts_with', alias?: string  } 
-  | { name: 'email_not_starts_with', alias?: string  } 
-  | { name: 'email_ends_with', alias?: string  } 
-  | { name: 'email_not_ends_with', alias?: string  } 
-  | { name: 'password', alias?: string  } 
-  | { name: 'password_not', alias?: string  } 
-  | { name: 'password_in', alias?: string  } 
-  | { name: 'password_not_in', alias?: string  } 
-  | { name: 'password_lt', alias?: string  } 
-  | { name: 'password_lte', alias?: string  } 
-  | { name: 'password_gt', alias?: string  } 
-  | { name: 'password_gte', alias?: string  } 
-  | { name: 'password_contains', alias?: string  } 
-  | { name: 'password_not_contains', alias?: string  } 
-  | { name: 'password_starts_with', alias?: string  } 
-  | { name: 'password_not_starts_with', alias?: string  } 
-  | { name: 'password_ends_with', alias?: string  } 
-  | { name: 'password_not_ends_with', alias?: string  } 
+  | { name: 'company', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   
-export interface UserCreateInput {
+export interface CompanyWhereInput {
   id?: string | null
-  firstName?: string
-  lastName?: string
-  username?: string
-  email?: string
-  password?: string
-  roles?: UserCreaterolesInput | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  companyName?: string | null
+  companyName_not?: string | null
+  companyName_in?: string[]
+  companyName_not_in?: string[]
+  companyName_lt?: string | null
+  companyName_lte?: string | null
+  companyName_gt?: string | null
+  companyName_gte?: string | null
+  companyName_contains?: string | null
+  companyName_not_contains?: string | null
+  companyName_starts_with?: string | null
+  companyName_not_starts_with?: string | null
+  companyName_ends_with?: string | null
+  companyName_not_ends_with?: string | null
+  tickerSymbol?: string | null
+  tickerSymbol_not?: string | null
+  tickerSymbol_in?: string[]
+  tickerSymbol_not_in?: string[]
+  tickerSymbol_lt?: string | null
+  tickerSymbol_lte?: string | null
+  tickerSymbol_gt?: string | null
+  tickerSymbol_gte?: string | null
+  tickerSymbol_contains?: string | null
+  tickerSymbol_not_contains?: string | null
+  tickerSymbol_starts_with?: string | null
+  tickerSymbol_not_starts_with?: string | null
+  tickerSymbol_ends_with?: string | null
+  tickerSymbol_not_ends_with?: string | null
+  keyRatios?: KeyRatiosPerCompanyWhereInput | null
+  AND?: CompanyWhereInput[]
 }
-export type UserCreateInputInputObject =
-  | Extract<keyof UserCreateInput, string>
+export type CompanyWhereInputInputObject =
+  | Extract<keyof CompanyWhereInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'username', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'password', alias?: string  } 
-  | { name: 'roles', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'companyName', alias?: string  } 
+  | { name: 'companyName_not', alias?: string  } 
+  | { name: 'companyName_in', alias?: string  } 
+  | { name: 'companyName_not_in', alias?: string  } 
+  | { name: 'companyName_lt', alias?: string  } 
+  | { name: 'companyName_lte', alias?: string  } 
+  | { name: 'companyName_gt', alias?: string  } 
+  | { name: 'companyName_gte', alias?: string  } 
+  | { name: 'companyName_contains', alias?: string  } 
+  | { name: 'companyName_not_contains', alias?: string  } 
+  | { name: 'companyName_starts_with', alias?: string  } 
+  | { name: 'companyName_not_starts_with', alias?: string  } 
+  | { name: 'companyName_ends_with', alias?: string  } 
+  | { name: 'companyName_not_ends_with', alias?: string  } 
+  | { name: 'tickerSymbol', alias?: string  } 
+  | { name: 'tickerSymbol_not', alias?: string  } 
+  | { name: 'tickerSymbol_in', alias?: string  } 
+  | { name: 'tickerSymbol_not_in', alias?: string  } 
+  | { name: 'tickerSymbol_lt', alias?: string  } 
+  | { name: 'tickerSymbol_lte', alias?: string  } 
+  | { name: 'tickerSymbol_gt', alias?: string  } 
+  | { name: 'tickerSymbol_gte', alias?: string  } 
+  | { name: 'tickerSymbol_contains', alias?: string  } 
+  | { name: 'tickerSymbol_not_contains', alias?: string  } 
+  | { name: 'tickerSymbol_starts_with', alias?: string  } 
+  | { name: 'tickerSymbol_not_starts_with', alias?: string  } 
+  | { name: 'tickerSymbol_ends_with', alias?: string  } 
+  | { name: 'tickerSymbol_not_ends_with', alias?: string  } 
+  | { name: 'keyRatios', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
   
-export interface UserCreaterolesInput {
-  set?: string[]
+export interface CompanyWhereUniqueInput {
+  id?: string | null
 }
-export type UserCreaterolesInputInputObject =
-  | Extract<keyof UserCreaterolesInput, string>
-  | { name: 'set', alias?: string  } 
+export type CompanyWhereUniqueInputInputObject =
+  | Extract<keyof CompanyWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
   
-export interface UserUpdateInput {
-  firstName?: string | null
-  lastName?: string | null
-  username?: string | null
-  email?: string | null
-  password?: string | null
-  roles?: UserUpdaterolesInput | null
+export interface KeyRatiosPerCompanyCreateInput {
+  id?: string | null
+  company?: CompanyCreateOneWithoutKeyRatiosInput | null
+  earningsPerShare?: undefined | null
+  dividends?: undefined | null
+  bookValuePerShare?: undefined | null
+  freeCashFlow?: undefined | null
+  freeCashFlowPerShare?: undefined | null
+  returnOnEquity?: undefined | null
+  currentRatio?: undefined | null
+  debtToEquity?: undefined | null
 }
-export type UserUpdateInputInputObject =
-  | Extract<keyof UserUpdateInput, string>
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'username', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'password', alias?: string  } 
-  | { name: 'roles', alias?: string  } 
+export type KeyRatiosPerCompanyCreateInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanyCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'company', alias?: string  } 
+  | { name: 'earningsPerShare', alias?: string  } 
+  | { name: 'dividends', alias?: string  } 
+  | { name: 'bookValuePerShare', alias?: string  } 
+  | { name: 'freeCashFlow', alias?: string  } 
+  | { name: 'freeCashFlowPerShare', alias?: string  } 
+  | { name: 'returnOnEquity', alias?: string  } 
+  | { name: 'currentRatio', alias?: string  } 
+  | { name: 'debtToEquity', alias?: string  } 
   
-export interface UserUpdaterolesInput {
-  set?: string[]
+export interface CompanyCreateOneWithoutKeyRatiosInput {
+  create?: CompanyCreateWithoutKeyRatiosInput | null
+  connect?: CompanyWhereUniqueInput | null
 }
-export type UserUpdaterolesInputInputObject =
-  | Extract<keyof UserUpdaterolesInput, string>
-  | { name: 'set', alias?: string  } 
+export type CompanyCreateOneWithoutKeyRatiosInputInputObject =
+  | Extract<keyof CompanyCreateOneWithoutKeyRatiosInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
   
-export interface UserUpdateManyMutationInput {
-  firstName?: string | null
-  lastName?: string | null
-  username?: string | null
-  email?: string | null
-  password?: string | null
-  roles?: UserUpdaterolesInput | null
+export interface CompanyCreateWithoutKeyRatiosInput {
+  id?: string | null
+  companyName?: string | null
+  tickerSymbol?: string | null
 }
-export type UserUpdateManyMutationInputInputObject =
-  | Extract<keyof UserUpdateManyMutationInput, string>
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'username', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'password', alias?: string  } 
-  | { name: 'roles', alias?: string  } 
+export type CompanyCreateWithoutKeyRatiosInputInputObject =
+  | Extract<keyof CompanyCreateWithoutKeyRatiosInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'companyName', alias?: string  } 
+  | { name: 'tickerSymbol', alias?: string  } 
   
-export interface UserSubscriptionWhereInput {
+export interface KeyRatiosPerCompanyUpdateInput {
+  company?: CompanyUpdateOneWithoutKeyRatiosInput | null
+  earningsPerShare?: undefined | null
+  dividends?: undefined | null
+  bookValuePerShare?: undefined | null
+  freeCashFlow?: undefined | null
+  freeCashFlowPerShare?: undefined | null
+  returnOnEquity?: undefined | null
+  currentRatio?: undefined | null
+  debtToEquity?: undefined | null
+}
+export type KeyRatiosPerCompanyUpdateInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanyUpdateInput, string>
+  | { name: 'company', alias?: string  } 
+  | { name: 'earningsPerShare', alias?: string  } 
+  | { name: 'dividends', alias?: string  } 
+  | { name: 'bookValuePerShare', alias?: string  } 
+  | { name: 'freeCashFlow', alias?: string  } 
+  | { name: 'freeCashFlowPerShare', alias?: string  } 
+  | { name: 'returnOnEquity', alias?: string  } 
+  | { name: 'currentRatio', alias?: string  } 
+  | { name: 'debtToEquity', alias?: string  } 
+  
+export interface CompanyUpdateOneWithoutKeyRatiosInput {
+  create?: CompanyCreateWithoutKeyRatiosInput | null
+  update?: CompanyUpdateWithoutKeyRatiosDataInput | null
+  upsert?: CompanyUpsertWithoutKeyRatiosInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+  connect?: CompanyWhereUniqueInput | null
+}
+export type CompanyUpdateOneWithoutKeyRatiosInputInputObject =
+  | Extract<keyof CompanyUpdateOneWithoutKeyRatiosInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface CompanyUpdateWithoutKeyRatiosDataInput {
+  companyName?: string | null
+  tickerSymbol?: string | null
+}
+export type CompanyUpdateWithoutKeyRatiosDataInputInputObject =
+  | Extract<keyof CompanyUpdateWithoutKeyRatiosDataInput, string>
+  | { name: 'companyName', alias?: string  } 
+  | { name: 'tickerSymbol', alias?: string  } 
+  
+export interface CompanyUpsertWithoutKeyRatiosInput {
+  update?: CompanyUpdateWithoutKeyRatiosDataInput
+  create?: CompanyCreateWithoutKeyRatiosInput
+}
+export type CompanyUpsertWithoutKeyRatiosInputInputObject =
+  | Extract<keyof CompanyUpsertWithoutKeyRatiosInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface KeyRatiosPerCompanyUpdateManyMutationInput {
+  earningsPerShare?: undefined | null
+  dividends?: undefined | null
+  bookValuePerShare?: undefined | null
+  freeCashFlow?: undefined | null
+  freeCashFlowPerShare?: undefined | null
+  returnOnEquity?: undefined | null
+  currentRatio?: undefined | null
+  debtToEquity?: undefined | null
+}
+export type KeyRatiosPerCompanyUpdateManyMutationInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanyUpdateManyMutationInput, string>
+  | { name: 'earningsPerShare', alias?: string  } 
+  | { name: 'dividends', alias?: string  } 
+  | { name: 'bookValuePerShare', alias?: string  } 
+  | { name: 'freeCashFlow', alias?: string  } 
+  | { name: 'freeCashFlowPerShare', alias?: string  } 
+  | { name: 'returnOnEquity', alias?: string  } 
+  | { name: 'currentRatio', alias?: string  } 
+  | { name: 'debtToEquity', alias?: string  } 
+  
+export interface CompanyCreateInput {
+  id?: string | null
+  companyName?: string | null
+  tickerSymbol?: string | null
+  keyRatios?: KeyRatiosPerCompanyCreateOneWithoutCompanyInput | null
+}
+export type CompanyCreateInputInputObject =
+  | Extract<keyof CompanyCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'companyName', alias?: string  } 
+  | { name: 'tickerSymbol', alias?: string  } 
+  | { name: 'keyRatios', alias?: string  } 
+  
+export interface KeyRatiosPerCompanyCreateOneWithoutCompanyInput {
+  create?: KeyRatiosPerCompanyCreateWithoutCompanyInput | null
+  connect?: KeyRatiosPerCompanyWhereUniqueInput | null
+}
+export type KeyRatiosPerCompanyCreateOneWithoutCompanyInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanyCreateOneWithoutCompanyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface KeyRatiosPerCompanyCreateWithoutCompanyInput {
+  id?: string | null
+  earningsPerShare?: undefined | null
+  dividends?: undefined | null
+  bookValuePerShare?: undefined | null
+  freeCashFlow?: undefined | null
+  freeCashFlowPerShare?: undefined | null
+  returnOnEquity?: undefined | null
+  currentRatio?: undefined | null
+  debtToEquity?: undefined | null
+}
+export type KeyRatiosPerCompanyCreateWithoutCompanyInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanyCreateWithoutCompanyInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'earningsPerShare', alias?: string  } 
+  | { name: 'dividends', alias?: string  } 
+  | { name: 'bookValuePerShare', alias?: string  } 
+  | { name: 'freeCashFlow', alias?: string  } 
+  | { name: 'freeCashFlowPerShare', alias?: string  } 
+  | { name: 'returnOnEquity', alias?: string  } 
+  | { name: 'currentRatio', alias?: string  } 
+  | { name: 'debtToEquity', alias?: string  } 
+  
+export interface CompanyUpdateInput {
+  companyName?: string | null
+  tickerSymbol?: string | null
+  keyRatios?: KeyRatiosPerCompanyUpdateOneWithoutCompanyInput | null
+}
+export type CompanyUpdateInputInputObject =
+  | Extract<keyof CompanyUpdateInput, string>
+  | { name: 'companyName', alias?: string  } 
+  | { name: 'tickerSymbol', alias?: string  } 
+  | { name: 'keyRatios', alias?: string  } 
+  
+export interface KeyRatiosPerCompanyUpdateOneWithoutCompanyInput {
+  create?: KeyRatiosPerCompanyCreateWithoutCompanyInput | null
+  update?: KeyRatiosPerCompanyUpdateWithoutCompanyDataInput | null
+  upsert?: KeyRatiosPerCompanyUpsertWithoutCompanyInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+  connect?: KeyRatiosPerCompanyWhereUniqueInput | null
+}
+export type KeyRatiosPerCompanyUpdateOneWithoutCompanyInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanyUpdateOneWithoutCompanyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface KeyRatiosPerCompanyUpdateWithoutCompanyDataInput {
+  earningsPerShare?: undefined | null
+  dividends?: undefined | null
+  bookValuePerShare?: undefined | null
+  freeCashFlow?: undefined | null
+  freeCashFlowPerShare?: undefined | null
+  returnOnEquity?: undefined | null
+  currentRatio?: undefined | null
+  debtToEquity?: undefined | null
+}
+export type KeyRatiosPerCompanyUpdateWithoutCompanyDataInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanyUpdateWithoutCompanyDataInput, string>
+  | { name: 'earningsPerShare', alias?: string  } 
+  | { name: 'dividends', alias?: string  } 
+  | { name: 'bookValuePerShare', alias?: string  } 
+  | { name: 'freeCashFlow', alias?: string  } 
+  | { name: 'freeCashFlowPerShare', alias?: string  } 
+  | { name: 'returnOnEquity', alias?: string  } 
+  | { name: 'currentRatio', alias?: string  } 
+  | { name: 'debtToEquity', alias?: string  } 
+  
+export interface KeyRatiosPerCompanyUpsertWithoutCompanyInput {
+  update?: KeyRatiosPerCompanyUpdateWithoutCompanyDataInput
+  create?: KeyRatiosPerCompanyCreateWithoutCompanyInput
+}
+export type KeyRatiosPerCompanyUpsertWithoutCompanyInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanyUpsertWithoutCompanyInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface CompanyUpdateManyMutationInput {
+  companyName?: string | null
+  tickerSymbol?: string | null
+}
+export type CompanyUpdateManyMutationInputInputObject =
+  | Extract<keyof CompanyUpdateManyMutationInput, string>
+  | { name: 'companyName', alias?: string  } 
+  | { name: 'tickerSymbol', alias?: string  } 
+  
+export interface KeyRatiosPerCompanySubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
   updatedFields_contains_every?: string[]
   updatedFields_contains_some?: string[]
-  node?: UserWhereInput | null
-  AND?: UserSubscriptionWhereInput[]
+  node?: KeyRatiosPerCompanyWhereInput | null
+  AND?: KeyRatiosPerCompanySubscriptionWhereInput[]
 }
-export type UserSubscriptionWhereInputInputObject =
-  | Extract<keyof UserSubscriptionWhereInput, string>
+export type KeyRatiosPerCompanySubscriptionWhereInputInputObject =
+  | Extract<keyof KeyRatiosPerCompanySubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  
+export interface CompanySubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: CompanyWhereInput | null
+  AND?: CompanySubscriptionWhereInput[]
+}
+export type CompanySubscriptionWhereInputInputObject =
+  | Extract<keyof CompanySubscriptionWhereInput, string>
   | { name: 'mutation_in', alias?: string  } 
   | { name: 'updatedFields_contains', alias?: string  } 
   | { name: 'updatedFields_contains_every', alias?: string  } 
@@ -1003,19 +1715,33 @@ export type UserSubscriptionWhereInputInputObject =
   | { name: 'AND', alias?: string  } 
   
 
-export type UserOrderByInputValues =
+export type KeyRatiosPerCompanyOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'firstName_ASC'
-  | 'firstName_DESC'
-  | 'lastName_ASC'
-  | 'lastName_DESC'
-  | 'username_ASC'
-  | 'username_DESC'
-  | 'email_ASC'
-  | 'email_DESC'
-  | 'password_ASC'
-  | 'password_DESC'
+  | 'earningsPerShare_ASC'
+  | 'earningsPerShare_DESC'
+  | 'dividends_ASC'
+  | 'dividends_DESC'
+  | 'bookValuePerShare_ASC'
+  | 'bookValuePerShare_DESC'
+  | 'freeCashFlow_ASC'
+  | 'freeCashFlow_DESC'
+  | 'freeCashFlowPerShare_ASC'
+  | 'freeCashFlowPerShare_DESC'
+  | 'returnOnEquity_ASC'
+  | 'returnOnEquity_DESC'
+  | 'currentRatio_ASC'
+  | 'currentRatio_DESC'
+  | 'debtToEquity_ASC'
+  | 'debtToEquity_DESC'
+  
+export type CompanyOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'companyName_ASC'
+  | 'companyName_DESC'
+  | 'tickerSymbol_ASC'
+  | 'tickerSymbol_DESC'
   
 export type MutationTypeValues =
   | 'CREATED'

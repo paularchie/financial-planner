@@ -1,36 +1,36 @@
-var path = require('path');
-const HWP = require('html-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const loaders = require('./webpack-utils/loaders');
 
 module.exports = {
+    mode: 'development',
     entry: './src/index.tsx',
-    devtool: 'inline-source-map',
-    output: {
-        path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js',
-    },
-    resolve: {
-        extensions: [".ts", ".tsx", ".js"]
-    },
     module: {
         rules: [
-            { test: /\.tsx?$/, loader: "ts-loader" },
-            {
-                test: /\.scss$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
-            }
+            loaders.typescript,
+            loaders.css,
+            loaders.scss,
+            loaders.file,
         ]
     },
+    devtool: 'inline-source-map',
+    resolve: {
+        extensions: [".ts", ".tsx", ".jsx", ".js"]
+    },
     devServer: {
+        contentBase: './dist',
+        historyApiFallback: true,
+        disableHostCheck: true,
         host: '0.0.0.0',
-        disableHostCheck: true // workaround for webpack issue 
     },
     plugins: [
-        new HWP(
+        new HtmlWebpackPlugin(
             { template: path.join(__dirname, '/public/index.html') }
         )
-    ]
+    ],
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+        publicPath: '/'
+    },
 };

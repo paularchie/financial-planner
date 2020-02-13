@@ -1,9 +1,21 @@
-type User { 
+
+
+type KeyRatiosPerCompany {
     id: ID! @id
-    firstName: String! 
-    lastName: String!
-    username: String! @unique
-    email: String! @unique
-    password: String!
-    roles: [String]
+    company: Company
+    earningsPerShare: Json
+    dividends: Json
+    bookValuePerShare: Json
+    freeCashFlow: Json
+    freeCashFlowPerShare: Json
+    returnOnEquity: Json
+    currentRatio: Json
+    debtToEquity: Json
+}
+
+type Company { 
+    id: ID! @id
+    companyName: String
+    tickerSymbol: String
+    keyRatios: KeyRatiosPerCompany @relation(link: INLINE)
 }

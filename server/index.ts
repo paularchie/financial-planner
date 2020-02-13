@@ -6,7 +6,8 @@ import * as path from 'path';
 import { makePrismaSchema } from 'nexus-prisma';
 import { Query } from './graphql/queries/user.query';
 import { Mutation } from './graphql/mutations/user.mutation';
-import { cors } from './middleware/cors.middleware';
+import { routes } from './rest-api/routes';
+// import { cors } from './middleware/cors.middleware';
 
 const schema = makePrismaSchema({
     types: [Query, Mutation],
@@ -24,7 +25,7 @@ const schema = makePrismaSchema({
 
 const app = express();
 // app.use(cors)
-// routes(app, prisma);
+routes(app, prisma);
 
 const corsOptions = {
     origin: `*`,

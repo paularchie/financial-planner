@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './investment-calculator.scss';
-import { formatNumber } from '../util';
+import { formatNumber } from '../../util';
 
 const InvestmentCalculator = () => {
 

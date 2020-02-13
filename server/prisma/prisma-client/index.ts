@@ -16,7 +16,10 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
-  user: (where?: UserWhereInput) => Promise<boolean>;
+  company: (where?: CompanyWhereInput) => Promise<boolean>;
+  keyRatiosPerCompany: (
+    where?: KeyRatiosPerCompanyWhereInput
+  ) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -38,47 +41,90 @@ export interface Prisma {
    * Queries
    */
 
-  user: (where: UserWhereUniqueInput) => UserNullablePromise;
-  users: (args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
+  company: (where: CompanyWhereUniqueInput) => CompanyNullablePromise;
+  companies: (args?: {
+    where?: CompanyWhereInput;
+    orderBy?: CompanyOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<User>;
-  usersConnection: (args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
+  }) => FragmentableArray<Company>;
+  companiesConnection: (args?: {
+    where?: CompanyWhereInput;
+    orderBy?: CompanyOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => UserConnectionPromise;
+  }) => CompanyConnectionPromise;
+  keyRatiosPerCompany: (
+    where: KeyRatiosPerCompanyWhereUniqueInput
+  ) => KeyRatiosPerCompanyNullablePromise;
+  keyRatiosPerCompanies: (args?: {
+    where?: KeyRatiosPerCompanyWhereInput;
+    orderBy?: KeyRatiosPerCompanyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<KeyRatiosPerCompany>;
+  keyRatiosPerCompaniesConnection: (args?: {
+    where?: KeyRatiosPerCompanyWhereInput;
+    orderBy?: KeyRatiosPerCompanyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => KeyRatiosPerCompanyConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
    * Mutations
    */
 
-  createUser: (data: UserCreateInput) => UserPromise;
-  updateUser: (args: {
-    data: UserUpdateInput;
-    where: UserWhereUniqueInput;
-  }) => UserPromise;
-  updateManyUsers: (args: {
-    data: UserUpdateManyMutationInput;
-    where?: UserWhereInput;
+  createCompany: (data: CompanyCreateInput) => CompanyPromise;
+  updateCompany: (args: {
+    data: CompanyUpdateInput;
+    where: CompanyWhereUniqueInput;
+  }) => CompanyPromise;
+  updateManyCompanies: (args: {
+    data: CompanyUpdateManyMutationInput;
+    where?: CompanyWhereInput;
   }) => BatchPayloadPromise;
-  upsertUser: (args: {
-    where: UserWhereUniqueInput;
-    create: UserCreateInput;
-    update: UserUpdateInput;
-  }) => UserPromise;
-  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
-  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  upsertCompany: (args: {
+    where: CompanyWhereUniqueInput;
+    create: CompanyCreateInput;
+    update: CompanyUpdateInput;
+  }) => CompanyPromise;
+  deleteCompany: (where: CompanyWhereUniqueInput) => CompanyPromise;
+  deleteManyCompanies: (where?: CompanyWhereInput) => BatchPayloadPromise;
+  createKeyRatiosPerCompany: (
+    data: KeyRatiosPerCompanyCreateInput
+  ) => KeyRatiosPerCompanyPromise;
+  updateKeyRatiosPerCompany: (args: {
+    data: KeyRatiosPerCompanyUpdateInput;
+    where: KeyRatiosPerCompanyWhereUniqueInput;
+  }) => KeyRatiosPerCompanyPromise;
+  updateManyKeyRatiosPerCompanies: (args: {
+    data: KeyRatiosPerCompanyUpdateManyMutationInput;
+    where?: KeyRatiosPerCompanyWhereInput;
+  }) => BatchPayloadPromise;
+  upsertKeyRatiosPerCompany: (args: {
+    where: KeyRatiosPerCompanyWhereUniqueInput;
+    create: KeyRatiosPerCompanyCreateInput;
+    update: KeyRatiosPerCompanyUpdateInput;
+  }) => KeyRatiosPerCompanyPromise;
+  deleteKeyRatiosPerCompany: (
+    where: KeyRatiosPerCompanyWhereUniqueInput
+  ) => KeyRatiosPerCompanyPromise;
+  deleteManyKeyRatiosPerCompanies: (
+    where?: KeyRatiosPerCompanyWhereInput
+  ) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -88,9 +134,12 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  user: (
-    where?: UserSubscriptionWhereInput
-  ) => UserSubscriptionPayloadSubscription;
+  company: (
+    where?: CompanySubscriptionWhereInput
+  ) => CompanySubscriptionPayloadSubscription;
+  keyRatiosPerCompany: (
+    where?: KeyRatiosPerCompanySubscriptionWhereInput
+  ) => KeyRatiosPerCompanySubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -101,59 +150,41 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type UserOrderByInput =
+export type CompanyOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "firstName_ASC"
-  | "firstName_DESC"
-  | "lastName_ASC"
-  | "lastName_DESC"
-  | "username_ASC"
-  | "username_DESC"
-  | "email_ASC"
-  | "email_DESC"
-  | "password_ASC"
-  | "password_DESC";
+  | "companyName_ASC"
+  | "companyName_DESC"
+  | "tickerSymbol_ASC"
+  | "tickerSymbol_DESC";
+
+export type KeyRatiosPerCompanyOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "earningsPerShare_ASC"
+  | "earningsPerShare_DESC"
+  | "dividends_ASC"
+  | "dividends_DESC"
+  | "bookValuePerShare_ASC"
+  | "bookValuePerShare_DESC"
+  | "freeCashFlow_ASC"
+  | "freeCashFlow_DESC"
+  | "freeCashFlowPerShare_ASC"
+  | "freeCashFlowPerShare_DESC"
+  | "returnOnEquity_ASC"
+  | "returnOnEquity_DESC"
+  | "currentRatio_ASC"
+  | "currentRatio_DESC"
+  | "debtToEquity_ASC"
+  | "debtToEquity_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface UserCreateInput {
-  id?: Maybe<ID_Input>;
-  firstName: String;
-  lastName: String;
-  username: String;
-  email: String;
-  password: String;
-  roles?: Maybe<UserCreaterolesInput>;
-}
+export type CompanyWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
-export interface UserCreaterolesInput {
-  set?: Maybe<String[] | String>;
-}
-
-export interface UserUpdateInput {
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  roles?: Maybe<UserUpdaterolesInput>;
-}
-
-export interface UserUpdaterolesInput {
-  set?: Maybe<String[] | String>;
-}
-
-export interface UserUpdateManyMutationInput {
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  roles?: Maybe<UserUpdaterolesInput>;
-}
-
-export interface UserWhereInput {
+export interface CompanyWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -168,269 +199,319 @@ export interface UserWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  firstName?: Maybe<String>;
-  firstName_not?: Maybe<String>;
-  firstName_in?: Maybe<String[] | String>;
-  firstName_not_in?: Maybe<String[] | String>;
-  firstName_lt?: Maybe<String>;
-  firstName_lte?: Maybe<String>;
-  firstName_gt?: Maybe<String>;
-  firstName_gte?: Maybe<String>;
-  firstName_contains?: Maybe<String>;
-  firstName_not_contains?: Maybe<String>;
-  firstName_starts_with?: Maybe<String>;
-  firstName_not_starts_with?: Maybe<String>;
-  firstName_ends_with?: Maybe<String>;
-  firstName_not_ends_with?: Maybe<String>;
-  lastName?: Maybe<String>;
-  lastName_not?: Maybe<String>;
-  lastName_in?: Maybe<String[] | String>;
-  lastName_not_in?: Maybe<String[] | String>;
-  lastName_lt?: Maybe<String>;
-  lastName_lte?: Maybe<String>;
-  lastName_gt?: Maybe<String>;
-  lastName_gte?: Maybe<String>;
-  lastName_contains?: Maybe<String>;
-  lastName_not_contains?: Maybe<String>;
-  lastName_starts_with?: Maybe<String>;
-  lastName_not_starts_with?: Maybe<String>;
-  lastName_ends_with?: Maybe<String>;
-  lastName_not_ends_with?: Maybe<String>;
-  username?: Maybe<String>;
-  username_not?: Maybe<String>;
-  username_in?: Maybe<String[] | String>;
-  username_not_in?: Maybe<String[] | String>;
-  username_lt?: Maybe<String>;
-  username_lte?: Maybe<String>;
-  username_gt?: Maybe<String>;
-  username_gte?: Maybe<String>;
-  username_contains?: Maybe<String>;
-  username_not_contains?: Maybe<String>;
-  username_starts_with?: Maybe<String>;
-  username_not_starts_with?: Maybe<String>;
-  username_ends_with?: Maybe<String>;
-  username_not_ends_with?: Maybe<String>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  password?: Maybe<String>;
-  password_not?: Maybe<String>;
-  password_in?: Maybe<String[] | String>;
-  password_not_in?: Maybe<String[] | String>;
-  password_lt?: Maybe<String>;
-  password_lte?: Maybe<String>;
-  password_gt?: Maybe<String>;
-  password_gte?: Maybe<String>;
-  password_contains?: Maybe<String>;
-  password_not_contains?: Maybe<String>;
-  password_starts_with?: Maybe<String>;
-  password_not_starts_with?: Maybe<String>;
-  password_ends_with?: Maybe<String>;
-  password_not_ends_with?: Maybe<String>;
-  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
+  companyName?: Maybe<String>;
+  companyName_not?: Maybe<String>;
+  companyName_in?: Maybe<String[] | String>;
+  companyName_not_in?: Maybe<String[] | String>;
+  companyName_lt?: Maybe<String>;
+  companyName_lte?: Maybe<String>;
+  companyName_gt?: Maybe<String>;
+  companyName_gte?: Maybe<String>;
+  companyName_contains?: Maybe<String>;
+  companyName_not_contains?: Maybe<String>;
+  companyName_starts_with?: Maybe<String>;
+  companyName_not_starts_with?: Maybe<String>;
+  companyName_ends_with?: Maybe<String>;
+  companyName_not_ends_with?: Maybe<String>;
+  tickerSymbol?: Maybe<String>;
+  tickerSymbol_not?: Maybe<String>;
+  tickerSymbol_in?: Maybe<String[] | String>;
+  tickerSymbol_not_in?: Maybe<String[] | String>;
+  tickerSymbol_lt?: Maybe<String>;
+  tickerSymbol_lte?: Maybe<String>;
+  tickerSymbol_gt?: Maybe<String>;
+  tickerSymbol_gte?: Maybe<String>;
+  tickerSymbol_contains?: Maybe<String>;
+  tickerSymbol_not_contains?: Maybe<String>;
+  tickerSymbol_starts_with?: Maybe<String>;
+  tickerSymbol_not_starts_with?: Maybe<String>;
+  tickerSymbol_ends_with?: Maybe<String>;
+  tickerSymbol_not_ends_with?: Maybe<String>;
+  keyRatios?: Maybe<KeyRatiosPerCompanyWhereInput>;
+  AND?: Maybe<CompanyWhereInput[] | CompanyWhereInput>;
 }
 
-export interface UserSubscriptionWhereInput {
+export interface KeyRatiosPerCompanyWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  company?: Maybe<CompanyWhereInput>;
+  AND?: Maybe<KeyRatiosPerCompanyWhereInput[] | KeyRatiosPerCompanyWhereInput>;
+}
+
+export type KeyRatiosPerCompanyWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface CompanyCreateInput {
+  id?: Maybe<ID_Input>;
+  companyName?: Maybe<String>;
+  tickerSymbol?: Maybe<String>;
+  keyRatios?: Maybe<KeyRatiosPerCompanyCreateOneWithoutCompanyInput>;
+}
+
+export interface KeyRatiosPerCompanyCreateOneWithoutCompanyInput {
+  create?: Maybe<KeyRatiosPerCompanyCreateWithoutCompanyInput>;
+  connect?: Maybe<KeyRatiosPerCompanyWhereUniqueInput>;
+}
+
+export interface KeyRatiosPerCompanyCreateWithoutCompanyInput {
+  id?: Maybe<ID_Input>;
+  earningsPerShare?: Maybe<Json>;
+  dividends?: Maybe<Json>;
+  bookValuePerShare?: Maybe<Json>;
+  freeCashFlow?: Maybe<Json>;
+  freeCashFlowPerShare?: Maybe<Json>;
+  returnOnEquity?: Maybe<Json>;
+  currentRatio?: Maybe<Json>;
+  debtToEquity?: Maybe<Json>;
+}
+
+export interface CompanyUpdateInput {
+  companyName?: Maybe<String>;
+  tickerSymbol?: Maybe<String>;
+  keyRatios?: Maybe<KeyRatiosPerCompanyUpdateOneWithoutCompanyInput>;
+}
+
+export interface KeyRatiosPerCompanyUpdateOneWithoutCompanyInput {
+  create?: Maybe<KeyRatiosPerCompanyCreateWithoutCompanyInput>;
+  update?: Maybe<KeyRatiosPerCompanyUpdateWithoutCompanyDataInput>;
+  upsert?: Maybe<KeyRatiosPerCompanyUpsertWithoutCompanyInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<KeyRatiosPerCompanyWhereUniqueInput>;
+}
+
+export interface KeyRatiosPerCompanyUpdateWithoutCompanyDataInput {
+  earningsPerShare?: Maybe<Json>;
+  dividends?: Maybe<Json>;
+  bookValuePerShare?: Maybe<Json>;
+  freeCashFlow?: Maybe<Json>;
+  freeCashFlowPerShare?: Maybe<Json>;
+  returnOnEquity?: Maybe<Json>;
+  currentRatio?: Maybe<Json>;
+  debtToEquity?: Maybe<Json>;
+}
+
+export interface KeyRatiosPerCompanyUpsertWithoutCompanyInput {
+  update: KeyRatiosPerCompanyUpdateWithoutCompanyDataInput;
+  create: KeyRatiosPerCompanyCreateWithoutCompanyInput;
+}
+
+export interface CompanyUpdateManyMutationInput {
+  companyName?: Maybe<String>;
+  tickerSymbol?: Maybe<String>;
+}
+
+export interface KeyRatiosPerCompanyCreateInput {
+  id?: Maybe<ID_Input>;
+  company?: Maybe<CompanyCreateOneWithoutKeyRatiosInput>;
+  earningsPerShare?: Maybe<Json>;
+  dividends?: Maybe<Json>;
+  bookValuePerShare?: Maybe<Json>;
+  freeCashFlow?: Maybe<Json>;
+  freeCashFlowPerShare?: Maybe<Json>;
+  returnOnEquity?: Maybe<Json>;
+  currentRatio?: Maybe<Json>;
+  debtToEquity?: Maybe<Json>;
+}
+
+export interface CompanyCreateOneWithoutKeyRatiosInput {
+  create?: Maybe<CompanyCreateWithoutKeyRatiosInput>;
+  connect?: Maybe<CompanyWhereUniqueInput>;
+}
+
+export interface CompanyCreateWithoutKeyRatiosInput {
+  id?: Maybe<ID_Input>;
+  companyName?: Maybe<String>;
+  tickerSymbol?: Maybe<String>;
+}
+
+export interface KeyRatiosPerCompanyUpdateInput {
+  company?: Maybe<CompanyUpdateOneWithoutKeyRatiosInput>;
+  earningsPerShare?: Maybe<Json>;
+  dividends?: Maybe<Json>;
+  bookValuePerShare?: Maybe<Json>;
+  freeCashFlow?: Maybe<Json>;
+  freeCashFlowPerShare?: Maybe<Json>;
+  returnOnEquity?: Maybe<Json>;
+  currentRatio?: Maybe<Json>;
+  debtToEquity?: Maybe<Json>;
+}
+
+export interface CompanyUpdateOneWithoutKeyRatiosInput {
+  create?: Maybe<CompanyCreateWithoutKeyRatiosInput>;
+  update?: Maybe<CompanyUpdateWithoutKeyRatiosDataInput>;
+  upsert?: Maybe<CompanyUpsertWithoutKeyRatiosInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<CompanyWhereUniqueInput>;
+}
+
+export interface CompanyUpdateWithoutKeyRatiosDataInput {
+  companyName?: Maybe<String>;
+  tickerSymbol?: Maybe<String>;
+}
+
+export interface CompanyUpsertWithoutKeyRatiosInput {
+  update: CompanyUpdateWithoutKeyRatiosDataInput;
+  create: CompanyCreateWithoutKeyRatiosInput;
+}
+
+export interface KeyRatiosPerCompanyUpdateManyMutationInput {
+  earningsPerShare?: Maybe<Json>;
+  dividends?: Maybe<Json>;
+  bookValuePerShare?: Maybe<Json>;
+  freeCashFlow?: Maybe<Json>;
+  freeCashFlowPerShare?: Maybe<Json>;
+  returnOnEquity?: Maybe<Json>;
+  currentRatio?: Maybe<Json>;
+  debtToEquity?: Maybe<Json>;
+}
+
+export interface CompanySubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  node?: Maybe<CompanyWhereInput>;
+  AND?: Maybe<CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput>;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  username?: Maybe<String>;
-  email?: Maybe<String>;
-}>;
+export interface KeyRatiosPerCompanySubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<KeyRatiosPerCompanyWhereInput>;
+  AND?: Maybe<
+    | KeyRatiosPerCompanySubscriptionWhereInput[]
+    | KeyRatiosPerCompanySubscriptionWhereInput
+  >;
+}
 
 export interface NodeNode {
   id: ID_Output;
 }
 
-export interface UserPreviousValues {
+export interface Company {
   id: ID_Output;
-  firstName: String;
-  lastName: String;
-  username: String;
-  email: String;
-  password: String;
-  roles: String[];
+  companyName?: String;
+  tickerSymbol?: String;
 }
 
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
-    Fragmentable {
+export interface CompanyPromise extends Promise<Company>, Fragmentable {
   id: () => Promise<ID_Output>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  username: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  roles: () => Promise<String[]>;
+  companyName: () => Promise<String>;
+  tickerSymbol: () => Promise<String>;
+  keyRatios: <T = KeyRatiosPerCompanyPromise>() => T;
 }
 
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
+export interface CompanySubscription
+  extends Promise<AsyncIterator<Company>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  firstName: () => Promise<AsyncIterator<String>>;
-  lastName: () => Promise<AsyncIterator<String>>;
-  username: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  roles: () => Promise<AsyncIterator<String[]>>;
+  companyName: () => Promise<AsyncIterator<String>>;
+  tickerSymbol: () => Promise<AsyncIterator<String>>;
+  keyRatios: <T = KeyRatiosPerCompanySubscription>() => T;
 }
 
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
+export interface CompanyNullablePromise
+  extends Promise<Company | null>,
     Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface UserEdge {
-  node: User;
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface User {
-  id: ID_Output;
-  firstName: String;
-  lastName: String;
-  username: String;
-  email: String;
-  password: String;
-  roles: String[];
-}
-
-export interface UserPromise extends Promise<User>, Fragmentable {
   id: () => Promise<ID_Output>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  username: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  roles: () => Promise<String[]>;
+  companyName: () => Promise<String>;
+  tickerSymbol: () => Promise<String>;
+  keyRatios: <T = KeyRatiosPerCompanyPromise>() => T;
 }
 
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
+export interface KeyRatiosPerCompany {
+  id: ID_Output;
+  earningsPerShare?: Json;
+  dividends?: Json;
+  bookValuePerShare?: Json;
+  freeCashFlow?: Json;
+  freeCashFlowPerShare?: Json;
+  returnOnEquity?: Json;
+  currentRatio?: Json;
+  debtToEquity?: Json;
+}
+
+export interface KeyRatiosPerCompanyPromise
+  extends Promise<KeyRatiosPerCompany>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  company: <T = CompanyPromise>() => T;
+  earningsPerShare: () => Promise<Json>;
+  dividends: () => Promise<Json>;
+  bookValuePerShare: () => Promise<Json>;
+  freeCashFlow: () => Promise<Json>;
+  freeCashFlowPerShare: () => Promise<Json>;
+  returnOnEquity: () => Promise<Json>;
+  currentRatio: () => Promise<Json>;
+  debtToEquity: () => Promise<Json>;
+}
+
+export interface KeyRatiosPerCompanySubscription
+  extends Promise<AsyncIterator<KeyRatiosPerCompany>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  firstName: () => Promise<AsyncIterator<String>>;
-  lastName: () => Promise<AsyncIterator<String>>;
-  username: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  roles: () => Promise<AsyncIterator<String[]>>;
+  company: <T = CompanySubscription>() => T;
+  earningsPerShare: () => Promise<AsyncIterator<Json>>;
+  dividends: () => Promise<AsyncIterator<Json>>;
+  bookValuePerShare: () => Promise<AsyncIterator<Json>>;
+  freeCashFlow: () => Promise<AsyncIterator<Json>>;
+  freeCashFlowPerShare: () => Promise<AsyncIterator<Json>>;
+  returnOnEquity: () => Promise<AsyncIterator<Json>>;
+  currentRatio: () => Promise<AsyncIterator<Json>>;
+  debtToEquity: () => Promise<AsyncIterator<Json>>;
 }
 
-export interface UserNullablePromise
-  extends Promise<User | null>,
+export interface KeyRatiosPerCompanyNullablePromise
+  extends Promise<KeyRatiosPerCompany | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  username: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  roles: () => Promise<String[]>;
+  company: <T = CompanyPromise>() => T;
+  earningsPerShare: () => Promise<Json>;
+  dividends: () => Promise<Json>;
+  bookValuePerShare: () => Promise<Json>;
+  freeCashFlow: () => Promise<Json>;
+  freeCashFlowPerShare: () => Promise<Json>;
+  returnOnEquity: () => Promise<Json>;
+  currentRatio: () => Promise<Json>;
+  debtToEquity: () => Promise<Json>;
 }
 
-export interface UserConnection {
+export interface CompanyConnection {
   pageInfo: PageInfo;
-  edges: UserEdge[];
+  edges: CompanyEdge[];
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface CompanyConnectionPromise
+  extends Promise<CompanyConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  edges: <T = FragmentableArray<CompanyEdge>>() => T;
+  aggregate: <T = AggregateCompanyPromise>() => T;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface CompanyConnectionSubscription
+  extends Promise<AsyncIterator<CompanyConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CompanyEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCompanySubscription>() => T;
 }
 
 export interface PageInfo {
@@ -456,22 +537,224 @@ export interface PageInfoSubscription
   endCursor: () => Promise<AsyncIterator<String>>;
 }
 
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
-*/
-export type Int = number;
+export interface CompanyEdge {
+  node: Company;
+  cursor: String;
+}
 
-/*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
-*/
-export type String = string;
+export interface CompanyEdgePromise extends Promise<CompanyEdge>, Fragmentable {
+  node: <T = CompanyPromise>() => T;
+  cursor: () => Promise<String>;
+}
 
-export type Long = string;
+export interface CompanyEdgeSubscription
+  extends Promise<AsyncIterator<CompanyEdge>>,
+    Fragmentable {
+  node: <T = CompanySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
 
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
+export interface AggregateCompany {
+  count: Int;
+}
+
+export interface AggregateCompanyPromise
+  extends Promise<AggregateCompany>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCompanySubscription
+  extends Promise<AsyncIterator<AggregateCompany>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface KeyRatiosPerCompanyConnection {
+  pageInfo: PageInfo;
+  edges: KeyRatiosPerCompanyEdge[];
+}
+
+export interface KeyRatiosPerCompanyConnectionPromise
+  extends Promise<KeyRatiosPerCompanyConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<KeyRatiosPerCompanyEdge>>() => T;
+  aggregate: <T = AggregateKeyRatiosPerCompanyPromise>() => T;
+}
+
+export interface KeyRatiosPerCompanyConnectionSubscription
+  extends Promise<AsyncIterator<KeyRatiosPerCompanyConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<KeyRatiosPerCompanyEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregateKeyRatiosPerCompanySubscription>() => T;
+}
+
+export interface KeyRatiosPerCompanyEdge {
+  node: KeyRatiosPerCompany;
+  cursor: String;
+}
+
+export interface KeyRatiosPerCompanyEdgePromise
+  extends Promise<KeyRatiosPerCompanyEdge>,
+    Fragmentable {
+  node: <T = KeyRatiosPerCompanyPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface KeyRatiosPerCompanyEdgeSubscription
+  extends Promise<AsyncIterator<KeyRatiosPerCompanyEdge>>,
+    Fragmentable {
+  node: <T = KeyRatiosPerCompanySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateKeyRatiosPerCompany {
+  count: Int;
+}
+
+export interface AggregateKeyRatiosPerCompanyPromise
+  extends Promise<AggregateKeyRatiosPerCompany>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateKeyRatiosPerCompanySubscription
+  extends Promise<AsyncIterator<AggregateKeyRatiosPerCompany>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface CompanySubscriptionPayload {
+  mutation: MutationType;
+  node: Company;
+  updatedFields: String[];
+  previousValues: CompanyPreviousValues;
+}
+
+export interface CompanySubscriptionPayloadPromise
+  extends Promise<CompanySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CompanyPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CompanyPreviousValuesPromise>() => T;
+}
+
+export interface CompanySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CompanySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CompanySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CompanyPreviousValuesSubscription>() => T;
+}
+
+export interface CompanyPreviousValues {
+  id: ID_Output;
+  companyName?: String;
+  tickerSymbol?: String;
+}
+
+export interface CompanyPreviousValuesPromise
+  extends Promise<CompanyPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  companyName: () => Promise<String>;
+  tickerSymbol: () => Promise<String>;
+}
+
+export interface CompanyPreviousValuesSubscription
+  extends Promise<AsyncIterator<CompanyPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  companyName: () => Promise<AsyncIterator<String>>;
+  tickerSymbol: () => Promise<AsyncIterator<String>>;
+}
+
+export interface KeyRatiosPerCompanySubscriptionPayload {
+  mutation: MutationType;
+  node: KeyRatiosPerCompany;
+  updatedFields: String[];
+  previousValues: KeyRatiosPerCompanyPreviousValues;
+}
+
+export interface KeyRatiosPerCompanySubscriptionPayloadPromise
+  extends Promise<KeyRatiosPerCompanySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = KeyRatiosPerCompanyPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = KeyRatiosPerCompanyPreviousValuesPromise>() => T;
+}
+
+export interface KeyRatiosPerCompanySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<KeyRatiosPerCompanySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = KeyRatiosPerCompanySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = KeyRatiosPerCompanyPreviousValuesSubscription>() => T;
+}
+
+export interface KeyRatiosPerCompanyPreviousValues {
+  id: ID_Output;
+  earningsPerShare?: Json;
+  dividends?: Json;
+  bookValuePerShare?: Json;
+  freeCashFlow?: Json;
+  freeCashFlowPerShare?: Json;
+  returnOnEquity?: Json;
+  currentRatio?: Json;
+  debtToEquity?: Json;
+}
+
+export interface KeyRatiosPerCompanyPreviousValuesPromise
+  extends Promise<KeyRatiosPerCompanyPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  earningsPerShare: () => Promise<Json>;
+  dividends: () => Promise<Json>;
+  bookValuePerShare: () => Promise<Json>;
+  freeCashFlow: () => Promise<Json>;
+  freeCashFlowPerShare: () => Promise<Json>;
+  returnOnEquity: () => Promise<Json>;
+  currentRatio: () => Promise<Json>;
+  debtToEquity: () => Promise<Json>;
+}
+
+export interface KeyRatiosPerCompanyPreviousValuesSubscription
+  extends Promise<AsyncIterator<KeyRatiosPerCompanyPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  earningsPerShare: () => Promise<AsyncIterator<Json>>;
+  dividends: () => Promise<AsyncIterator<Json>>;
+  bookValuePerShare: () => Promise<AsyncIterator<Json>>;
+  freeCashFlow: () => Promise<AsyncIterator<Json>>;
+  freeCashFlowPerShare: () => Promise<AsyncIterator<Json>>;
+  returnOnEquity: () => Promise<AsyncIterator<Json>>;
+  currentRatio: () => Promise<AsyncIterator<Json>>;
+  debtToEquity: () => Promise<AsyncIterator<Json>>;
+}
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -479,13 +762,36 @@ The `ID` scalar type represents a unique identifier, often used to refetch an ob
 export type ID_Input = string | number;
 export type ID_Output = string;
 
+/*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
+
+export type Json = any;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+*/
+export type Int = number;
+
+/*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
+
+export type Long = string;
+
 /**
  * Model Metadata
  */
 
 export const models: Model[] = [
   {
-    name: "User",
+    name: "KeyRatiosPerCompany",
+    embedded: false
+  },
+  {
+    name: "Company",
     embedded: false
   }
 ];
@@ -497,6 +803,6 @@ export const models: Model[] = [
 export const Prisma = makePrismaClientClass<ClientConstructor<Prisma>>({
   typeDefs,
   models,
-  endpoint: `http://localhost:4466`
+  endpoint: `http://prisma:4466`
 });
 export const prisma = new Prisma();

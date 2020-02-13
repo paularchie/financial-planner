@@ -1,0 +1,99 @@
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+.layout-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    .header {
+        // display nav icon or nav bar
+        .mobile-only {
+            @include respond-min(500px) {
+                display: none;
+            }
+
+
+            // position the nav icon in the middle vertically
+            display: flex;
+            align-items: center;
+        }
+
+        .desktop-only {
+            @include respond-max(500px) {
+                display: none;
+            }
+        }
+    }
+
+    nav {
+        height: 100%;
+    }
+
+    .navigation-items {
+        padding: 0;
+        list-style: none;
+        display: flex;
+        height: 100%;
+
+        @include respond-max(500px) {
+            flex-flow: column;
+        }
+    }
+
+    .navigation-item {
+        a {
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            padding: 1em;
+            height: 100%;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    .side-drawer {
+        position: fixed;
+        width: 280px;
+        max-width: 70%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 200;
+        background-color: white;
+
+        // padding: 32px 16px;
+        transition: transform 0.3s ease-out;
+
+        @include respond-min(500px) {
+            display: none;
+        }
+    }
+
+    .open {
+        transform: translateX(0);
+    }
+
+    .close {
+        transform: translateX(-100%);
+    }
+
+    .content-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    main {
+        height: 100%;
+        padding: 0 $margin-medium;
+    }
+
+    .welcome-bar {
+        img {
+            width: 250px;
+            margin: 0.5em;
+        }
+    }
+}

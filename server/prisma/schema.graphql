@@ -2,7 +2,11 @@
 ### Do not make changes to this file directly
 
 
-type AggregateUser {
+type AggregateCompany {
+  count: Int!
+}
+
+type AggregateKeyRatiosPerCompany {
   count: Int!
 }
 
@@ -10,132 +14,97 @@ type BatchPayload {
   count: Long!
 }
 
-scalar Long
-
-type Mutation {
-  createUser(data: UserCreateInput!): User!
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteUser(where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  upsertUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
-}
-
-type PageInfo {
-  endCursor: String
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String
-}
-
-type Query {
-  user(where: UserWhereUniqueInput!): User
-  users(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]!
-  usersConnection(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): UserConnection!
-}
-
-type User {
-  email: String!
-  firstName: String!
+type Company {
+  companyName: String
   id: ID!
-  lastName: String!
-  password: String!
-  roles: [String!]!
-  username: String!
+  keyRatios: KeyRatiosPerCompany
+  tickerSymbol: String
 }
 
-type UserConnection {
-  aggregate: AggregateUser!
-  edges: [UserEdge!]!
+type CompanyConnection {
+  aggregate: AggregateCompany!
+  edges: [CompanyEdge!]!
   pageInfo: PageInfo!
 }
 
-input UserCreateInput {
-  email: String!
-  firstName: String!
+input CompanyCreateInput {
+  companyName: String
   id: ID
-  lastName: String!
-  password: String!
-  roles: UserCreaterolesInput
-  username: String!
+  keyRatios: KeyRatiosPerCompanyCreateOneWithoutCompanyInput
+  tickerSymbol: String
 }
 
-input UserCreaterolesInput {
-  set: [String!]
+input CompanyCreateOneWithoutKeyRatiosInput {
+  connect: CompanyWhereUniqueInput
+  create: CompanyCreateWithoutKeyRatiosInput
 }
 
-type UserEdge {
+input CompanyCreateWithoutKeyRatiosInput {
+  companyName: String
+  id: ID
+  tickerSymbol: String
+}
+
+type CompanyEdge {
   cursor: String!
-  node: User!
+  node: Company!
 }
 
-enum UserOrderByInput {
-  email_ASC
-  email_DESC
-  firstName_ASC
-  firstName_DESC
+enum CompanyOrderByInput {
+  companyName_ASC
+  companyName_DESC
   id_ASC
   id_DESC
-  lastName_ASC
-  lastName_DESC
-  password_ASC
-  password_DESC
-  username_ASC
-  username_DESC
+  tickerSymbol_ASC
+  tickerSymbol_DESC
 }
 
-input UserUpdateInput {
-  email: String
-  firstName: String
-  lastName: String
-  password: String
-  roles: UserUpdaterolesInput
-  username: String
+input CompanyUpdateInput {
+  companyName: String
+  keyRatios: KeyRatiosPerCompanyUpdateOneWithoutCompanyInput
+  tickerSymbol: String
 }
 
-input UserUpdateManyMutationInput {
-  email: String
-  firstName: String
-  lastName: String
-  password: String
-  roles: UserUpdaterolesInput
-  username: String
+input CompanyUpdateManyMutationInput {
+  companyName: String
+  tickerSymbol: String
 }
 
-input UserUpdaterolesInput {
-  set: [String!]
+input CompanyUpdateOneWithoutKeyRatiosInput {
+  connect: CompanyWhereUniqueInput
+  create: CompanyCreateWithoutKeyRatiosInput
+  delete: Boolean
+  disconnect: Boolean
+  update: CompanyUpdateWithoutKeyRatiosDataInput
+  upsert: CompanyUpsertWithoutKeyRatiosInput
 }
 
-input UserWhereInput {
-  AND: [UserWhereInput!]
-  email: String
-  email_contains: String
-  email_ends_with: String
-  email_gt: String
-  email_gte: String
-  email_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_not: String
-  email_not_contains: String
-  email_not_ends_with: String
-  email_not_in: [String!]
-  email_not_starts_with: String
-  email_starts_with: String
-  firstName: String
-  firstName_contains: String
-  firstName_ends_with: String
-  firstName_gt: String
-  firstName_gte: String
-  firstName_in: [String!]
-  firstName_lt: String
-  firstName_lte: String
-  firstName_not: String
-  firstName_not_contains: String
-  firstName_not_ends_with: String
-  firstName_not_in: [String!]
-  firstName_not_starts_with: String
-  firstName_starts_with: String
+input CompanyUpdateWithoutKeyRatiosDataInput {
+  companyName: String
+  tickerSymbol: String
+}
+
+input CompanyUpsertWithoutKeyRatiosInput {
+  create: CompanyCreateWithoutKeyRatiosInput!
+  update: CompanyUpdateWithoutKeyRatiosDataInput!
+}
+
+input CompanyWhereInput {
+  AND: [CompanyWhereInput!]
+  companyName: String
+  companyName_contains: String
+  companyName_ends_with: String
+  companyName_gt: String
+  companyName_gte: String
+  companyName_in: [String!]
+  companyName_lt: String
+  companyName_lte: String
+  companyName_not: String
+  companyName_not_contains: String
+  companyName_not_ends_with: String
+  companyName_not_in: [String!]
+  companyName_not_starts_with: String
+  companyName_starts_with: String
   id: ID
   id_contains: ID
   id_ends_with: ID
@@ -150,52 +119,204 @@ input UserWhereInput {
   id_not_in: [ID!]
   id_not_starts_with: ID
   id_starts_with: ID
-  lastName: String
-  lastName_contains: String
-  lastName_ends_with: String
-  lastName_gt: String
-  lastName_gte: String
-  lastName_in: [String!]
-  lastName_lt: String
-  lastName_lte: String
-  lastName_not: String
-  lastName_not_contains: String
-  lastName_not_ends_with: String
-  lastName_not_in: [String!]
-  lastName_not_starts_with: String
-  lastName_starts_with: String
-  password: String
-  password_contains: String
-  password_ends_with: String
-  password_gt: String
-  password_gte: String
-  password_in: [String!]
-  password_lt: String
-  password_lte: String
-  password_not: String
-  password_not_contains: String
-  password_not_ends_with: String
-  password_not_in: [String!]
-  password_not_starts_with: String
-  password_starts_with: String
-  username: String
-  username_contains: String
-  username_ends_with: String
-  username_gt: String
-  username_gte: String
-  username_in: [String!]
-  username_lt: String
-  username_lte: String
-  username_not: String
-  username_not_contains: String
-  username_not_ends_with: String
-  username_not_in: [String!]
-  username_not_starts_with: String
-  username_starts_with: String
+  keyRatios: KeyRatiosPerCompanyWhereInput
+  tickerSymbol: String
+  tickerSymbol_contains: String
+  tickerSymbol_ends_with: String
+  tickerSymbol_gt: String
+  tickerSymbol_gte: String
+  tickerSymbol_in: [String!]
+  tickerSymbol_lt: String
+  tickerSymbol_lte: String
+  tickerSymbol_not: String
+  tickerSymbol_not_contains: String
+  tickerSymbol_not_ends_with: String
+  tickerSymbol_not_in: [String!]
+  tickerSymbol_not_starts_with: String
+  tickerSymbol_starts_with: String
 }
 
-input UserWhereUniqueInput {
-  email: String
+input CompanyWhereUniqueInput {
   id: ID
-  username: String
+}
+
+scalar Json
+
+type KeyRatiosPerCompany {
+  bookValuePerShare: Json
+  company: Company
+  currentRatio: Json
+  debtToEquity: Json
+  dividends: Json
+  earningsPerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  id: ID!
+  returnOnEquity: Json
+}
+
+type KeyRatiosPerCompanyConnection {
+  aggregate: AggregateKeyRatiosPerCompany!
+  edges: [KeyRatiosPerCompanyEdge!]!
+  pageInfo: PageInfo!
+}
+
+input KeyRatiosPerCompanyCreateInput {
+  bookValuePerShare: Json
+  company: CompanyCreateOneWithoutKeyRatiosInput
+  currentRatio: Json
+  debtToEquity: Json
+  dividends: Json
+  earningsPerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  id: ID
+  returnOnEquity: Json
+}
+
+input KeyRatiosPerCompanyCreateOneWithoutCompanyInput {
+  connect: KeyRatiosPerCompanyWhereUniqueInput
+  create: KeyRatiosPerCompanyCreateWithoutCompanyInput
+}
+
+input KeyRatiosPerCompanyCreateWithoutCompanyInput {
+  bookValuePerShare: Json
+  currentRatio: Json
+  debtToEquity: Json
+  dividends: Json
+  earningsPerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  id: ID
+  returnOnEquity: Json
+}
+
+type KeyRatiosPerCompanyEdge {
+  cursor: String!
+  node: KeyRatiosPerCompany!
+}
+
+enum KeyRatiosPerCompanyOrderByInput {
+  bookValuePerShare_ASC
+  bookValuePerShare_DESC
+  currentRatio_ASC
+  currentRatio_DESC
+  debtToEquity_ASC
+  debtToEquity_DESC
+  dividends_ASC
+  dividends_DESC
+  earningsPerShare_ASC
+  earningsPerShare_DESC
+  freeCashFlow_ASC
+  freeCashFlow_DESC
+  freeCashFlowPerShare_ASC
+  freeCashFlowPerShare_DESC
+  id_ASC
+  id_DESC
+  returnOnEquity_ASC
+  returnOnEquity_DESC
+}
+
+input KeyRatiosPerCompanyUpdateInput {
+  bookValuePerShare: Json
+  company: CompanyUpdateOneWithoutKeyRatiosInput
+  currentRatio: Json
+  debtToEquity: Json
+  dividends: Json
+  earningsPerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  returnOnEquity: Json
+}
+
+input KeyRatiosPerCompanyUpdateManyMutationInput {
+  bookValuePerShare: Json
+  currentRatio: Json
+  debtToEquity: Json
+  dividends: Json
+  earningsPerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  returnOnEquity: Json
+}
+
+input KeyRatiosPerCompanyUpdateOneWithoutCompanyInput {
+  connect: KeyRatiosPerCompanyWhereUniqueInput
+  create: KeyRatiosPerCompanyCreateWithoutCompanyInput
+  delete: Boolean
+  disconnect: Boolean
+  update: KeyRatiosPerCompanyUpdateWithoutCompanyDataInput
+  upsert: KeyRatiosPerCompanyUpsertWithoutCompanyInput
+}
+
+input KeyRatiosPerCompanyUpdateWithoutCompanyDataInput {
+  bookValuePerShare: Json
+  currentRatio: Json
+  debtToEquity: Json
+  dividends: Json
+  earningsPerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  returnOnEquity: Json
+}
+
+input KeyRatiosPerCompanyUpsertWithoutCompanyInput {
+  create: KeyRatiosPerCompanyCreateWithoutCompanyInput!
+  update: KeyRatiosPerCompanyUpdateWithoutCompanyDataInput!
+}
+
+input KeyRatiosPerCompanyWhereInput {
+  AND: [KeyRatiosPerCompanyWhereInput!]
+  company: CompanyWhereInput
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+}
+
+input KeyRatiosPerCompanyWhereUniqueInput {
+  id: ID
+}
+
+scalar Long
+
+type Mutation {
+  createCompany(data: CompanyCreateInput!): Company!
+  createKeyRatiosPerCompany(data: KeyRatiosPerCompanyCreateInput!): KeyRatiosPerCompany!
+  deleteCompany(where: CompanyWhereUniqueInput!): Company
+  deleteKeyRatiosPerCompany(where: KeyRatiosPerCompanyWhereUniqueInput!): KeyRatiosPerCompany
+  deleteManyCompanies(where: CompanyWhereInput): BatchPayload!
+  deleteManyKeyRatiosPerCompanies(where: KeyRatiosPerCompanyWhereInput): BatchPayload!
+  updateCompany(data: CompanyUpdateInput!, where: CompanyWhereUniqueInput!): Company
+  updateKeyRatiosPerCompany(data: KeyRatiosPerCompanyUpdateInput!, where: KeyRatiosPerCompanyWhereUniqueInput!): KeyRatiosPerCompany
+  updateManyCompanies(data: CompanyUpdateManyMutationInput!, where: CompanyWhereInput): BatchPayload!
+  updateManyKeyRatiosPerCompanies(data: KeyRatiosPerCompanyUpdateManyMutationInput!, where: KeyRatiosPerCompanyWhereInput): BatchPayload!
+  upsertCompany(create: CompanyCreateInput!, update: CompanyUpdateInput!, where: CompanyWhereUniqueInput!): Company!
+  upsertKeyRatiosPerCompany(create: KeyRatiosPerCompanyCreateInput!, update: KeyRatiosPerCompanyUpdateInput!, where: KeyRatiosPerCompanyWhereUniqueInput!): KeyRatiosPerCompany!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+type Query {
+  companies(after: String, before: String, first: Int, last: Int, orderBy: CompanyOrderByInput, skip: Int, where: CompanyWhereInput): [Company!]!
+  companiesConnection(after: String, before: String, first: Int, last: Int, orderBy: CompanyOrderByInput, skip: Int, where: CompanyWhereInput): CompanyConnection!
+  company(where: CompanyWhereUniqueInput!): Company
+  keyRatiosPerCompanies(after: String, before: String, first: Int, last: Int, orderBy: KeyRatiosPerCompanyOrderByInput, skip: Int, where: KeyRatiosPerCompanyWhereInput): [KeyRatiosPerCompany!]!
+  keyRatiosPerCompaniesConnection(after: String, before: String, first: Int, last: Int, orderBy: KeyRatiosPerCompanyOrderByInput, skip: Int, where: KeyRatiosPerCompanyWhereInput): KeyRatiosPerCompanyConnection!
+  keyRatiosPerCompany(where: KeyRatiosPerCompanyWhereUniqueInput!): KeyRatiosPerCompany
 }

@@ -1,0 +1,12 @@
+@import "abstracts/variables";
+
+.notification-container {
+    .message-container {
+        display: flex;
+        align-items: center;
+
+        i {
+            margin-right: $margin-icon;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 FROM node:alpine
 WORKDIR /app
 COPY package.json .
-RUN npm install
+RUN npm install && npm install prisma -g npm cache clean --force
 COPY . .
 CMD ["npm", "start"]

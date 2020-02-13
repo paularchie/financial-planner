@@ -1,0 +1,11 @@
+@import 'abstracts/variables';
+
+.tree-view-container {
+    // overflow-y: 'auto',
+
+    .MuiTreeItem-content {
+        border-bottom: 1px solid $color-border;
+        padding: 0.5em;
+        
+    }
+}

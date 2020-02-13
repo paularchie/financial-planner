@@ -2,7 +2,11 @@
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-export const typeDefs = /* GraphQL */ `type AggregateUser {
+export const typeDefs = /* GraphQL */ `type AggregateCompany {
+  count: Int!
+}
+
+type AggregateKeyRatiosPerCompany {
   count: Int!
 }
 
@@ -10,15 +14,345 @@ type BatchPayload {
   count: Long!
 }
 
+type Company {
+  id: ID!
+  companyName: String
+  tickerSymbol: String
+  keyRatios: KeyRatiosPerCompany
+}
+
+type CompanyConnection {
+  pageInfo: PageInfo!
+  edges: [CompanyEdge]!
+  aggregate: AggregateCompany!
+}
+
+input CompanyCreateInput {
+  id: ID
+  companyName: String
+  tickerSymbol: String
+  keyRatios: KeyRatiosPerCompanyCreateOneWithoutCompanyInput
+}
+
+input CompanyCreateOneWithoutKeyRatiosInput {
+  create: CompanyCreateWithoutKeyRatiosInput
+  connect: CompanyWhereUniqueInput
+}
+
+input CompanyCreateWithoutKeyRatiosInput {
+  id: ID
+  companyName: String
+  tickerSymbol: String
+}
+
+type CompanyEdge {
+  node: Company!
+  cursor: String!
+}
+
+enum CompanyOrderByInput {
+  id_ASC
+  id_DESC
+  companyName_ASC
+  companyName_DESC
+  tickerSymbol_ASC
+  tickerSymbol_DESC
+}
+
+type CompanyPreviousValues {
+  id: ID!
+  companyName: String
+  tickerSymbol: String
+}
+
+type CompanySubscriptionPayload {
+  mutation: MutationType!
+  node: Company
+  updatedFields: [String!]
+  previousValues: CompanyPreviousValues
+}
+
+input CompanySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CompanyWhereInput
+  AND: [CompanySubscriptionWhereInput!]
+}
+
+input CompanyUpdateInput {
+  companyName: String
+  tickerSymbol: String
+  keyRatios: KeyRatiosPerCompanyUpdateOneWithoutCompanyInput
+}
+
+input CompanyUpdateManyMutationInput {
+  companyName: String
+  tickerSymbol: String
+}
+
+input CompanyUpdateOneWithoutKeyRatiosInput {
+  create: CompanyCreateWithoutKeyRatiosInput
+  update: CompanyUpdateWithoutKeyRatiosDataInput
+  upsert: CompanyUpsertWithoutKeyRatiosInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: CompanyWhereUniqueInput
+}
+
+input CompanyUpdateWithoutKeyRatiosDataInput {
+  companyName: String
+  tickerSymbol: String
+}
+
+input CompanyUpsertWithoutKeyRatiosInput {
+  update: CompanyUpdateWithoutKeyRatiosDataInput!
+  create: CompanyCreateWithoutKeyRatiosInput!
+}
+
+input CompanyWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  companyName: String
+  companyName_not: String
+  companyName_in: [String!]
+  companyName_not_in: [String!]
+  companyName_lt: String
+  companyName_lte: String
+  companyName_gt: String
+  companyName_gte: String
+  companyName_contains: String
+  companyName_not_contains: String
+  companyName_starts_with: String
+  companyName_not_starts_with: String
+  companyName_ends_with: String
+  companyName_not_ends_with: String
+  tickerSymbol: String
+  tickerSymbol_not: String
+  tickerSymbol_in: [String!]
+  tickerSymbol_not_in: [String!]
+  tickerSymbol_lt: String
+  tickerSymbol_lte: String
+  tickerSymbol_gt: String
+  tickerSymbol_gte: String
+  tickerSymbol_contains: String
+  tickerSymbol_not_contains: String
+  tickerSymbol_starts_with: String
+  tickerSymbol_not_starts_with: String
+  tickerSymbol_ends_with: String
+  tickerSymbol_not_ends_with: String
+  keyRatios: KeyRatiosPerCompanyWhereInput
+  AND: [CompanyWhereInput!]
+}
+
+input CompanyWhereUniqueInput {
+  id: ID
+}
+
+scalar Json
+
+type KeyRatiosPerCompany {
+  id: ID!
+  company: Company
+  earningsPerShare: Json
+  dividends: Json
+  bookValuePerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  returnOnEquity: Json
+  currentRatio: Json
+  debtToEquity: Json
+}
+
+type KeyRatiosPerCompanyConnection {
+  pageInfo: PageInfo!
+  edges: [KeyRatiosPerCompanyEdge]!
+  aggregate: AggregateKeyRatiosPerCompany!
+}
+
+input KeyRatiosPerCompanyCreateInput {
+  id: ID
+  company: CompanyCreateOneWithoutKeyRatiosInput
+  earningsPerShare: Json
+  dividends: Json
+  bookValuePerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  returnOnEquity: Json
+  currentRatio: Json
+  debtToEquity: Json
+}
+
+input KeyRatiosPerCompanyCreateOneWithoutCompanyInput {
+  create: KeyRatiosPerCompanyCreateWithoutCompanyInput
+  connect: KeyRatiosPerCompanyWhereUniqueInput
+}
+
+input KeyRatiosPerCompanyCreateWithoutCompanyInput {
+  id: ID
+  earningsPerShare: Json
+  dividends: Json
+  bookValuePerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  returnOnEquity: Json
+  currentRatio: Json
+  debtToEquity: Json
+}
+
+type KeyRatiosPerCompanyEdge {
+  node: KeyRatiosPerCompany!
+  cursor: String!
+}
+
+enum KeyRatiosPerCompanyOrderByInput {
+  id_ASC
+  id_DESC
+  earningsPerShare_ASC
+  earningsPerShare_DESC
+  dividends_ASC
+  dividends_DESC
+  bookValuePerShare_ASC
+  bookValuePerShare_DESC
+  freeCashFlow_ASC
+  freeCashFlow_DESC
+  freeCashFlowPerShare_ASC
+  freeCashFlowPerShare_DESC
+  returnOnEquity_ASC
+  returnOnEquity_DESC
+  currentRatio_ASC
+  currentRatio_DESC
+  debtToEquity_ASC
+  debtToEquity_DESC
+}
+
+type KeyRatiosPerCompanyPreviousValues {
+  id: ID!
+  earningsPerShare: Json
+  dividends: Json
+  bookValuePerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  returnOnEquity: Json
+  currentRatio: Json
+  debtToEquity: Json
+}
+
+type KeyRatiosPerCompanySubscriptionPayload {
+  mutation: MutationType!
+  node: KeyRatiosPerCompany
+  updatedFields: [String!]
+  previousValues: KeyRatiosPerCompanyPreviousValues
+}
+
+input KeyRatiosPerCompanySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: KeyRatiosPerCompanyWhereInput
+  AND: [KeyRatiosPerCompanySubscriptionWhereInput!]
+}
+
+input KeyRatiosPerCompanyUpdateInput {
+  company: CompanyUpdateOneWithoutKeyRatiosInput
+  earningsPerShare: Json
+  dividends: Json
+  bookValuePerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  returnOnEquity: Json
+  currentRatio: Json
+  debtToEquity: Json
+}
+
+input KeyRatiosPerCompanyUpdateManyMutationInput {
+  earningsPerShare: Json
+  dividends: Json
+  bookValuePerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  returnOnEquity: Json
+  currentRatio: Json
+  debtToEquity: Json
+}
+
+input KeyRatiosPerCompanyUpdateOneWithoutCompanyInput {
+  create: KeyRatiosPerCompanyCreateWithoutCompanyInput
+  update: KeyRatiosPerCompanyUpdateWithoutCompanyDataInput
+  upsert: KeyRatiosPerCompanyUpsertWithoutCompanyInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: KeyRatiosPerCompanyWhereUniqueInput
+}
+
+input KeyRatiosPerCompanyUpdateWithoutCompanyDataInput {
+  earningsPerShare: Json
+  dividends: Json
+  bookValuePerShare: Json
+  freeCashFlow: Json
+  freeCashFlowPerShare: Json
+  returnOnEquity: Json
+  currentRatio: Json
+  debtToEquity: Json
+}
+
+input KeyRatiosPerCompanyUpsertWithoutCompanyInput {
+  update: KeyRatiosPerCompanyUpdateWithoutCompanyDataInput!
+  create: KeyRatiosPerCompanyCreateWithoutCompanyInput!
+}
+
+input KeyRatiosPerCompanyWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  company: CompanyWhereInput
+  AND: [KeyRatiosPerCompanyWhereInput!]
+}
+
+input KeyRatiosPerCompanyWhereUniqueInput {
+  id: ID
+}
+
 scalar Long
 
 type Mutation {
-  createUser(data: UserCreateInput!): User!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  deleteUser(where: UserWhereUniqueInput!): User
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  createCompany(data: CompanyCreateInput!): Company!
+  updateCompany(data: CompanyUpdateInput!, where: CompanyWhereUniqueInput!): Company
+  updateManyCompanies(data: CompanyUpdateManyMutationInput!, where: CompanyWhereInput): BatchPayload!
+  upsertCompany(where: CompanyWhereUniqueInput!, create: CompanyCreateInput!, update: CompanyUpdateInput!): Company!
+  deleteCompany(where: CompanyWhereUniqueInput!): Company
+  deleteManyCompanies(where: CompanyWhereInput): BatchPayload!
+  createKeyRatiosPerCompany(data: KeyRatiosPerCompanyCreateInput!): KeyRatiosPerCompany!
+  updateKeyRatiosPerCompany(data: KeyRatiosPerCompanyUpdateInput!, where: KeyRatiosPerCompanyWhereUniqueInput!): KeyRatiosPerCompany
+  updateManyKeyRatiosPerCompanies(data: KeyRatiosPerCompanyUpdateManyMutationInput!, where: KeyRatiosPerCompanyWhereInput): BatchPayload!
+  upsertKeyRatiosPerCompany(where: KeyRatiosPerCompanyWhereUniqueInput!, create: KeyRatiosPerCompanyCreateInput!, update: KeyRatiosPerCompanyUpdateInput!): KeyRatiosPerCompany!
+  deleteKeyRatiosPerCompany(where: KeyRatiosPerCompanyWhereUniqueInput!): KeyRatiosPerCompany
+  deleteManyKeyRatiosPerCompanies(where: KeyRatiosPerCompanyWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -39,205 +373,17 @@ type PageInfo {
 }
 
 type Query {
-  user(where: UserWhereUniqueInput!): User
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  company(where: CompanyWhereUniqueInput!): Company
+  companies(where: CompanyWhereInput, orderBy: CompanyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Company]!
+  companiesConnection(where: CompanyWhereInput, orderBy: CompanyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CompanyConnection!
+  keyRatiosPerCompany(where: KeyRatiosPerCompanyWhereUniqueInput!): KeyRatiosPerCompany
+  keyRatiosPerCompanies(where: KeyRatiosPerCompanyWhereInput, orderBy: KeyRatiosPerCompanyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [KeyRatiosPerCompany]!
+  keyRatiosPerCompaniesConnection(where: KeyRatiosPerCompanyWhereInput, orderBy: KeyRatiosPerCompanyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): KeyRatiosPerCompanyConnection!
   node(id: ID!): Node
 }
 
 type Subscription {
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-}
-
-type User {
-  id: ID!
-  firstName: String!
-  lastName: String!
-  username: String!
-  email: String!
-  password: String!
-  roles: [String!]!
-}
-
-type UserConnection {
-  pageInfo: PageInfo!
-  edges: [UserEdge]!
-  aggregate: AggregateUser!
-}
-
-input UserCreateInput {
-  id: ID
-  firstName: String!
-  lastName: String!
-  username: String!
-  email: String!
-  password: String!
-  roles: UserCreaterolesInput
-}
-
-input UserCreaterolesInput {
-  set: [String!]
-}
-
-type UserEdge {
-  node: User!
-  cursor: String!
-}
-
-enum UserOrderByInput {
-  id_ASC
-  id_DESC
-  firstName_ASC
-  firstName_DESC
-  lastName_ASC
-  lastName_DESC
-  username_ASC
-  username_DESC
-  email_ASC
-  email_DESC
-  password_ASC
-  password_DESC
-}
-
-type UserPreviousValues {
-  id: ID!
-  firstName: String!
-  lastName: String!
-  username: String!
-  email: String!
-  password: String!
-  roles: [String!]!
-}
-
-type UserSubscriptionPayload {
-  mutation: MutationType!
-  node: User
-  updatedFields: [String!]
-  previousValues: UserPreviousValues
-}
-
-input UserSubscriptionWhereInput {
-  mutation_in: [MutationType!]
-  updatedFields_contains: String
-  updatedFields_contains_every: [String!]
-  updatedFields_contains_some: [String!]
-  node: UserWhereInput
-  AND: [UserSubscriptionWhereInput!]
-}
-
-input UserUpdateInput {
-  firstName: String
-  lastName: String
-  username: String
-  email: String
-  password: String
-  roles: UserUpdaterolesInput
-}
-
-input UserUpdateManyMutationInput {
-  firstName: String
-  lastName: String
-  username: String
-  email: String
-  password: String
-  roles: UserUpdaterolesInput
-}
-
-input UserUpdaterolesInput {
-  set: [String!]
-}
-
-input UserWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  firstName: String
-  firstName_not: String
-  firstName_in: [String!]
-  firstName_not_in: [String!]
-  firstName_lt: String
-  firstName_lte: String
-  firstName_gt: String
-  firstName_gte: String
-  firstName_contains: String
-  firstName_not_contains: String
-  firstName_starts_with: String
-  firstName_not_starts_with: String
-  firstName_ends_with: String
-  firstName_not_ends_with: String
-  lastName: String
-  lastName_not: String
-  lastName_in: [String!]
-  lastName_not_in: [String!]
-  lastName_lt: String
-  lastName_lte: String
-  lastName_gt: String
-  lastName_gte: String
-  lastName_contains: String
-  lastName_not_contains: String
-  lastName_starts_with: String
-  lastName_not_starts_with: String
-  lastName_ends_with: String
-  lastName_not_ends_with: String
-  username: String
-  username_not: String
-  username_in: [String!]
-  username_not_in: [String!]
-  username_lt: String
-  username_lte: String
-  username_gt: String
-  username_gte: String
-  username_contains: String
-  username_not_contains: String
-  username_starts_with: String
-  username_not_starts_with: String
-  username_ends_with: String
-  username_not_ends_with: String
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
-  password: String
-  password_not: String
-  password_in: [String!]
-  password_not_in: [String!]
-  password_lt: String
-  password_lte: String
-  password_gt: String
-  password_gte: String
-  password_contains: String
-  password_not_contains: String
-  password_starts_with: String
-  password_not_starts_with: String
-  password_ends_with: String
-  password_not_ends_with: String
-  AND: [UserWhereInput!]
-}
-
-input UserWhereUniqueInput {
-  id: ID
-  username: String
-  email: String
+  company(where: CompanySubscriptionWhereInput): CompanySubscriptionPayload
+  keyRatiosPerCompany(where: KeyRatiosPerCompanySubscriptionWhereInput): KeyRatiosPerCompanySubscriptionPayload
 }
 `

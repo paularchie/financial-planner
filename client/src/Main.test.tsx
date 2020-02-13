@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './App';
+import Main from './Main';
 
 
 test('should render', () => {
-    const { getByTestId } = render(<App />);
+    const { getByTestId } = render(<Main />);
     expect(getByTestId('app-container')).toBeDefined();
 });
